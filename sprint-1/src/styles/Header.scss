@@ -1,0 +1,39 @@
+@import 'variables';
+
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__logo{
+    height: 20px
+  }
+
+  &__search{
+
+  }
+
+  &__search{
+
+  }
+
+  &__avatar-container{
+    height: 48px;
+    width: 48px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+
+  &__avatar{
+   height: 100%;
+  }
+}
+
+.btn{
+  color: $accent-contrast;
+  background-color: $accent;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
