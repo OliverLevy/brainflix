@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.hero{
+  width: 100%;
+
+  &__img{
+    width: 100%;
+  }
+
+  &__controls{
+    position: relative;
+    top: -50px;
+  }
+}
