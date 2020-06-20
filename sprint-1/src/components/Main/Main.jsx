@@ -12,14 +12,16 @@ function Main({sideData, submitHandler, mainData, comments}){
       mainData={mainData} 
       />
 
-      <Description 
-      mainData={mainData}
-      />
+      <div>
+        <Description 
+        mainData={mainData}
+        />
 
-      <Comments 
-      submitHandler={submitHandler} 
-      comments={comments} 
-      />
+        <Comments 
+        submitHandler={submitHandler} 
+        comments={comments} 
+        />
+      </div>
 
       <SideVideo sideData={sideData} />
     </div>

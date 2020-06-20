@@ -1,7 +1,5 @@
 import React from 'react'
 import './Hero.scss'
-import MainData from '../../JSON/main-video-data.json'
-import SideData from '../../JSON/side-video-data.json'
 
 function Hero({mainData}) {
     return(

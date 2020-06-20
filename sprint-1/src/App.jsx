@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header.jsx'
 import Main from './components/Main/Main'
-import Hero from './components/Hero/Hero.jsx'
-import SideVideo from './components/SideVideo/SideVideo'
 import MainData from './JSON/main-video-data.json'
 import SideData from './JSON/side-video-data.json'
 
@@ -13,6 +11,7 @@ class App extends React.Component{
     comments: MainData[0].comments,
     sideData: SideData
  }
+
 
 
   submitHandler = (event) => {

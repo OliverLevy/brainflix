@@ -3,6 +3,9 @@ import './Comments.scss'
 
 
 function Comments({submitHandler, comments}){
+
+  // console.log(comments[0])
+
   return(
     <div>
       <div>
