@@ -2,16 +2,10 @@ import React from 'react'
 import SideData from '../../JSON/side-video-data.json'
 import './SideVideo.scss'
 
-class SideVideo extends React.Component{
-  state = { 
-    sideData: SideData,
-  }
-
-
-  render(){
+function SideVideo({sideData}){
     return (
       <ul>
-        {this.state.sideData.map(item =>{
+        {sideData.map(item =>{
           return (
             <li key={item.id}>
               <img src={process.env.PUBLIC_URL + item.image} alt="" className="testing"/>
@@ -22,7 +16,6 @@ class SideVideo extends React.Component{
         })}
       </ul>
     )
-  }
 }
 
 export default SideVideo

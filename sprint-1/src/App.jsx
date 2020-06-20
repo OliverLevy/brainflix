@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header.jsx'
+import Main from './components/Main/Main'
 import Hero from './components/Hero/Hero.jsx'
 import SideVideo from './components/SideVideo/SideVideo'
 import MainData from './JSON/main-video-data.json'
@@ -9,7 +10,8 @@ import SideData from './JSON/side-video-data.json'
 class App extends React.Component{
   state = {
     mainData: MainData[0],
-    comments: MainData[0].comments
+    comments: MainData[0].comments,
+    sideData: SideData
  }
 
 
@@ -32,8 +34,11 @@ class App extends React.Component{
     return (
       <div>
         <Header />
-        <Hero submitHandler={event => this.submitHandler(event)} mainVideo={this.state.mainData} comments={this.state.comments} />
-        {/* <SideVideo /> */}
+        <Main
+        sideData={this.state.sideData}
+        submitHandler={event => this.submitHandler(event)} 
+        mainData={this.state.mainData} 
+        comments={this.state.comments}/>
       </div>
     );
   }
