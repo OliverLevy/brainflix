@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
+import SideVideo from './components/SideVideo/SideVideo'
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div>
       <Header />
       <Hero />
+      {/* <SideVideo /> */}
     </div>
   );
 }
