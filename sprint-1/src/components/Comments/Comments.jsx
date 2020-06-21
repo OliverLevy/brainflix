@@ -8,9 +8,9 @@ function Comments({submitHandler, comments}){
 
   return(
     <div>
-      <div>
+      <div className="add-comment">
         <h3>3 Comments</h3>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="add-comment__form">
           <textarea name="commentBox"></textarea>
           <button>COMMENT</button>
         </form>
