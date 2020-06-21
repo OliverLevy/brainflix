@@ -12,11 +12,12 @@
   @include tablet{
     flex-direction: row;
     justify-content: space-between;
+    padding: 1rem 1.5rem;
   }
 
   @include desktop{
     // width: 100%;
-    padding: 16px 180px;
+    padding: 1rem 11.25rem;
   }
 
   &__logo{

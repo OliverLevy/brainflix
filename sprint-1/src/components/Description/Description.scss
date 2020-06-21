@@ -1,0 +1,51 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.desc{
+  padding: 2rem 1rem 2.5rem;
+
+  @include tablet{
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  &__title{
+    padding: 0 0 1rem;
+  }
+
+  &__items{
+    display: flex;
+    flex-direction: column;
+
+    @include tablet{
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__channel-container{
+    padding: 0 0 2rem;
+    display: flex;
+    align-items: center;
+  }
+  &__channel{
+    padding: 0 .5rem 0 0;
+  }
+
+  &__stats{
+    display: flex;
+    padding: 0 0 1.5rem;
+  }
+
+  &__views-icon{
+    padding: 0 .5rem 0 0;
+  }
+
+  &__likes-icon{
+    padding: 0 .5rem 0 1.5rem;
+  }
+
+  &__text{
+    padding: 1.5rem 0 0;
+  }
+}
