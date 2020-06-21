@@ -28,14 +28,25 @@ function Comments({submitHandler, comments}){
           </form>
         </div>
 
+        <div className="divider"></div>
+
       </div>
-      <div>
+      <div className="old-comment">
         {comments.map((comment, id) => {
         return (
         <div key={id}>
-          <h3>{comment.name}</h3>
-          <p>{comment.timestamp}</p>
-          <p>{comment.comment}</p>
+          <div className="old-comment__card">
+            <div className="old-comment__avatar"></div>
+            
+            <div className="old-comment__items">
+              <div className="old-comment__info">
+                <h3>{comment.name}</h3>
+                <p>{comment.timestamp}</p>
+              </div>
+              <p>{comment.comment}</p>
+            </div>
+          </div>
+          <div className="divider"></div>
         </div>
         )
         })}
