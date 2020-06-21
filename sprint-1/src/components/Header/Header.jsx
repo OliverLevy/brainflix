@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../assets/Logo/Logo-brainflix.svg'
+import UploadBtn from '../../assets/Icons/SVG/Icon-upload.svg'
 import avatar from '../../assets/Images/Mohan-muruge.jpg'
 import './Header.scss'
 
@@ -17,7 +18,14 @@ function Header() {
         </div>
       
         <div className="header__upload-container">
-          <button className="header__upload btn">+ UPLOAD</button>
+          
+          <button className="header__upload btn">
+            <div className="header__upload-items">
+              <img src={UploadBtn}/> 
+              UPLOAD
+            </div>
+          </button>
+
           <div className="header__avatar-container">
             <img src={avatar} alt="avatar" className="header__avatar" />
           </div>

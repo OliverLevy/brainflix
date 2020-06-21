@@ -8,7 +8,7 @@ import './Hero.scss'
 function Hero({mainData}) {
     return(
       <div className="hero"> 
-        <div className="hero__vid">
+        <div className="hero__vid-container">
           <video 
           className="hero__vid" 
           src={process.env.PUBLIC_URL + mainData.video} 
