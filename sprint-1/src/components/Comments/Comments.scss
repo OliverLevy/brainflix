@@ -113,6 +113,9 @@
   }
 
   &__comment{
+    width: 100%;
+    overflow: hidden;
+    overflow-wrap: break-word;
 
     @include desktop{
       padding-right: 2.5rem;
