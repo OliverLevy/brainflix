@@ -2,4 +2,46 @@
 @import '../../styles/mixins';
 
 .add-comment{
+
+
+  &__card{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__form{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 48px - 16px);
+  }
+
+  &__input{
+    height: 80px;
+    resize: none;
+    margin: 0 0 1rem;
+    border-radius: 4px;
+    border: $inputBorder 2px solid;
+    background: $inputBg;
+    
+    &:focus{
+      outline: none;
+      border: $accent 2px solid;
+    }
+  }
+
+  &__btn{
+    height: 48px;
+  }
+
+  &__avatar-container{
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  &__avatar{
+    width: auto;
+    height: 100%;
+  }
 }

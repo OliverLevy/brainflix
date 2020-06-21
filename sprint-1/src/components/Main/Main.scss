@@ -2,17 +2,17 @@
 @import '../../styles/mixins';
 
 .content{
-  padding: 2rem 1rem 2.5rem;
+  padding: 0 1rem 0;
   transition: all .2s;
   display: flex;
   flex-direction: column;
 
   @include tablet{
-    padding: 3rem 1.5rem 4rem;
+    padding: 0 1.5rem 0;
     flex-direction: row;
   }
 
   @include desktop{
-    padding: 3rem 11.25rem 4rem;
+    padding: 0 11.25rem 0;
   }
 }
