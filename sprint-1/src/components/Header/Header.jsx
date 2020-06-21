@@ -7,9 +7,15 @@ import './Header.scss'
 function Header() {
   return (
     <header className="header">
+      
       <img src={logo} alt="Brainflix logo" className="header__logo" />
-      <div className="header__item-container">
-        <input type="search" className="header__search" placeholder="Search" />
+        
+      <div className="header__items">
+        <div className="header__search-container">
+          <input type="search" className="header__search-bar" placeholder="Search" />
+          <div className="header__search-icon"></div>
+        </div>
+      
         <div className="header__upload-container">
           <button className="header__upload btn">+ UPLOAD</button>
           <div className="header__avatar-container">
