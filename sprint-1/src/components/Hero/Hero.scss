@@ -30,16 +30,18 @@
 
   &__play{
     height: 48px;
-    width: 48px;
-    background-image: url(../../assets/Icons/SVG/Icon-play.svg);
+    width: 62px;
+    background-image: url(../../assets/Icons/SVG/Icon-play.svg), linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5));
+    background-position: center;
     background-repeat: no-repeat;
-    border: 4px black solid;
+    border-radius: 4px;
   }
 
   &__progress{
     height: 48px;
     width: 48px;
     background-image: url(../../assets/Icons/SVG/Icon-play.svg);
+    background-position: center;
     background-repeat: no-repeat;
     border: 4px black solid;
   }
@@ -49,6 +51,7 @@
   }
 
   &__full-screen{
+    background-position: center;
     height: 48px;
     width: 48px;
     background-image: url(../../assets/Icons/SVG/Icon-play.svg);
@@ -58,8 +61,9 @@
 
   &__volume{
       height: 48px;
-      width: 48px;
+      width: 64px;
       background-image: url(../../assets/Icons/SVG/Icon-play.svg);
+      background-position: center;
       background-repeat: no-repeat;
       border: 4px black solid;
   }
