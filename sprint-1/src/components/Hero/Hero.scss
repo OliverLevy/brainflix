@@ -38,9 +38,15 @@
   padding: 0 16px;
 
   @include tablet{
+    justify-content: space-between;
+    padding: 0 8px;
+    bottom: 16px;
+  }
+
+  @include desktop{
     justify-content: space-evenly;
     padding: 0;
-    bottom: 16px;
+    bottom: 20px;
   }
 
 
@@ -73,6 +79,11 @@
     border-radius: 4px;
     
     @include tablet{
+      width: calc(100% - 168px);
+    }
+
+
+    @include desktop{
       width: calc(100% - 200px);
     }
   }
