@@ -33,10 +33,13 @@
   position: absolute;
   bottom: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
+  padding: 0 16px;
 
   @include tablet{
+    justify-content: space-evenly;
+    padding: 0;
     bottom: 16px;
   }
 
@@ -60,7 +63,7 @@
   }
 
   &__progress{
-    width: calc(100% - 200px);
+    width: calc(100% - 152px);
     height: 36px;
     background-color: rgba(0, 0, 0, .5);
     display: flex;
@@ -68,6 +71,10 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 4px;
+    
+    @include tablet{
+      width: calc(100% - 200px);
+    }
   }
 
   &__progress-range{
