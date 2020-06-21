@@ -2,7 +2,7 @@
 @import '../../styles/mixins';
 
 .add-comment{
-
+  
 
   &__card{
     display: flex;
@@ -14,24 +14,52 @@
     flex-direction: column;
     width: calc(100% - 48px - 16px);
     padding: 0 0 1.5rem;
+
+    @include tablet{
+      padding: 0 2.5rem 1.5rem 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__input-container{
+    width: 100%;
+
+    @include tablet{
+      width: calc(100% - 160px - 16px);
+    }
   }
 
   &__input{
     height: 80px;
+    width: 100%;
     resize: none;
     margin: 0 0 1rem;
     border-radius: 4px;
     border: $inputBorder 2px solid;
     background: $inputBg;
+
+    @include tablet{
+      height: 48px;
+    }
+
     
+
     &:focus{
       outline: none;
       border: $accent 2px solid;
     }
+
+    
   }
 
   &__btn{
     height: 48px;
+
+    @include tablet{
+      width: 160px;
+    }
   }
 
   &__avatar-container{
@@ -74,5 +102,20 @@
   &__info{
     display: flex;
     justify-content: space-between;
+
+    @include tablet{
+      justify-content: flex-start;
+
+      & h3{
+        padding-right: 8px;
+      }
+    }
+  }
+
+  &__comment{
+
+    @include desktop{
+      padding-right: 2.5rem;
+    }
   }
 }

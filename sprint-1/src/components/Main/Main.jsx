@@ -7,7 +7,7 @@ import './Main.scss'
 
 function Main({sideData, submitHandler, mainData, comments}){
   return(
-    <div>
+    <div className="main">
       <Hero 
       mainData={mainData} 
       />

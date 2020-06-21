@@ -22,14 +22,15 @@ function Comments({submitHandler, comments}){
             </div>
 
           <form onSubmit={submitHandler} className="add-comment__form">
-            <h5>Join the conversation</h5>
-            <textarea className="add-comment__input" name="commentBox"></textarea>
+            <div className="add-comment__input-container">
+              <h5>Join the conversation</h5>
+              <textarea className="add-comment__input" name="commentBox" placeholder="Add a comment"></textarea>
+            </div>
             <button className="add-comment__btn btn">COMMENT</button>
           </form>
         </div>
 
         <div className="divider"></div>
-
       </div>
       <div className="old-comment">
         {comments.map((comment, id) => {
@@ -43,7 +44,7 @@ function Comments({submitHandler, comments}){
                 <h3>{comment.name}</h3>
                 <p>{comment.timestamp}</p>
               </div>
-              <p>{comment.comment}</p>
+              <p className="old-comment__comment">{comment.comment}</p>
             </div>
           </div>
           <div className="divider"></div>

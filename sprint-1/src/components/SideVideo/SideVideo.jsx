@@ -4,17 +4,22 @@ import './SideVideo.scss'
 
 function SideVideo({sideData}){
     return (
-      <ul>
+      <div className="up-next">
+        <h4 className="up-next__header">NEXT VIDEO</h4>
         {sideData.map(item =>{
           return (
-            <li key={item.id}>
-              <img src={process.env.PUBLIC_URL + item.image} alt="" className="testing"/>
-              <h3>{item.title}</h3>
+            <div key={item.id} className="up-next__card">
+              <div className="up-next__img-container">
+                <img src={process.env.PUBLIC_URL + item.image} alt="" className="up-next__img"/>
+              </div>
+              <div className="up-next__text">
+              <h3 className="up-next__text-title">{item.title}</h3>
               <p>{item.channel}</p>
-            </li>
+              </div>
+            </div>
             )
         })}
-      </ul>
+      </div>
     )
 }
 
