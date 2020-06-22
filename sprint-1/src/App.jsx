@@ -12,11 +12,24 @@ class App extends React.Component{
     sideData: SideData
  }
 
- dynaDate = (dateNow) => {
-   let seconds = Date.now()/1000
-   if(seconds < 60){
-     return `${dateNow}`
+  dynaDate = (datePosted) => {
+    let seconds = (Date.now() - datePosted) / 1000;
+    let unix = new Date(datePosted)
+    let day = unix.getDate();
+    let month = unix.getMonth() + 1;
+    let year = unix.getFullYear();
+    if(seconds < 60){
+      return `${Math.trunc(seconds)}s ago`
+    } else if(seconds < 3600){
+      return `${Math.trunc(seconds / 60)}m ago`
+    } else if(seconds < 86400){
+      return `${Math.trunc((seconds / 60) / 60)}h ago`
+    } else if(seconds < 2592000){
+      return `${Math.trunc(((seconds / 30) / 60) / 60)}d ago`
+    } else {
+      return `${month}/${day}/${year}`;
     }
+   
  }
 
   submitHandler = (event) => {
@@ -44,7 +57,9 @@ class App extends React.Component{
         sideData={this.state.sideData}
         submitHandler={event => this.submitHandler(event)} 
         mainData={this.state.mainData} 
-        comments={this.state.comments}/>
+        comments={this.state.comments}
+        dynaDate={this.dynaDate}
+        />
       </div>
     );
   }

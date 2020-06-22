@@ -3,7 +3,7 @@ import './Comments.scss'
 import Avatar from '../../assets/Images/Mohan-muruge.jpg'
 
 
-function Comments({submitHandler, comments}){
+function Comments({submitHandler, comments, dynaDate}){
 
   let oldDate = 1592795570711;
   let testDate = Date.now()
@@ -45,7 +45,7 @@ function Comments({submitHandler, comments}){
               <div className="old-comment__info">
                 <h3>{comment.name}</h3>
                 {/* <h4 className="date">{comment.timestamp}</h4> */}
-                <h4 className="date">{Math.trunc((Date.now() - comment.timestamp)/1000)}</h4>
+        <h4 className="date">{dynaDate(comment.timestamp)}</h4>
               </div>
               <p className="old-comment__comment">{comment.comment}</p>
             </div>

@@ -5,7 +5,7 @@ import Comments from '../Comments/Comments'
 import SideVideo from '../SideVideo/SideVideo'
 import './Main.scss'
 
-function Main({sideData, submitHandler, mainData, comments}){
+function Main({sideData, submitHandler, mainData, comments, dynaDate}){
   return(
     <div className="main">
       <Hero 
@@ -21,6 +21,7 @@ function Main({sideData, submitHandler, mainData, comments}){
           <Comments 
           submitHandler={submitHandler} 
           comments={comments} 
+          dynaDate={dynaDate}
           />
         </div>
 
