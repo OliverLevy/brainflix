@@ -5,7 +5,9 @@ import Avatar from '../../assets/Images/Mohan-muruge.jpg'
 
 function Comments({submitHandler, comments}){
 
-  // console.log(comments[0])
+  let oldDate = 1592795570711;
+  let testDate = Date.now()
+  console.log((testDate - oldDate) /1000)
 
   return(
     <div>
@@ -42,7 +44,8 @@ function Comments({submitHandler, comments}){
             <div className="old-comment__items">
               <div className="old-comment__info">
                 <h3>{comment.name}</h3>
-                <h4 className="date">{comment.timestamp}</h4>
+                {/* <h4 className="date">{comment.timestamp}</h4> */}
+                <h4 className="date">{Math.trunc((Date.now() - comment.timestamp)/1000)}</h4>
               </div>
               <p className="old-comment__comment">{comment.comment}</p>
             </div>

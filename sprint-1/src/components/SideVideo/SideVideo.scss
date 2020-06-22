@@ -1,9 +1,16 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .up-next{
   
   max-width: 348px;
 
   &__header{
     padding: 0 0 2.5rem;
+
+    @include desktop{
+      padding: 2.5rem 0;
+    }
   }
   
   &__card{

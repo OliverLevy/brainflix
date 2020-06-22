@@ -12,7 +12,12 @@ class App extends React.Component{
     sideData: SideData
  }
 
-
+ dynaDate = (dateNow) => {
+   let seconds = Date.now()/1000
+   if(seconds < 60){
+     return `${dateNow}`
+    }
+ }
 
   submitHandler = (event) => {
     event.preventDefault()
@@ -22,7 +27,9 @@ class App extends React.Component{
         {
           name: "Placeholder",
           comment: event.target.commentBox.value,
-          timestamp: new Date().toDateString()
+          // timestamp: new Date().toDateString()
+          // timestamp: this.dynaDate("it's 3")
+          timestamp: Date.now()
         }]
       })
     event.target.reset()

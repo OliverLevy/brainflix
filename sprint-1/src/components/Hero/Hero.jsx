@@ -1,9 +1,5 @@
 import React from 'react'
 import './Hero.scss'
-// import PlayBtn from '../../assets/Icons/SVG/Icon-play.svg'
-// import PauseBtn from '../../assets/Icons/SVG/Icon-pause.svg'
-// import FullScreenBtn from '../../assets/Icons/SVG/Icon-fullscreen.svg'
-// import VolumeBtn from '../../assets/Icons/SVG/Icon-volume.svg'
 
 function Hero({mainData}) {
     return(
