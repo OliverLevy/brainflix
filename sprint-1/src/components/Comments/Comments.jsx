@@ -42,7 +42,7 @@ function Comments({submitHandler, comments}){
             <div className="old-comment__items">
               <div className="old-comment__info">
                 <h3>{comment.name}</h3>
-                <p>{comment.timestamp}</p>
+                <h4 className="date">{comment.timestamp}</h4>
               </div>
               <p className="old-comment__comment">{comment.comment}</p>
             </div>

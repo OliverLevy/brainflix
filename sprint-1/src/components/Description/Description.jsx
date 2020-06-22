@@ -13,7 +13,7 @@ function Description({mainData}){
           <div className="desc__items">
             <div className="desc__channel-container">
               <h3 className="desc__channel">By {mainData.channel}</h3>
-              <p>{mainData.timestamp}</p>
+              <h4 className="date">{mainData.timestamp}</h4>
             </div>
 
             <div className="desc__stats">

@@ -5,7 +5,7 @@ import './SideVideo.scss'
 function SideVideo({sideData}){
     return (
       <div className="up-next">
-        <h4 className="up-next__header">NEXT VIDEO</h4>
+        <h5 className="up-next__header">NEXT VIDEO</h5>
         {sideData.map(item =>{
           return (
             <div key={item.id} className="up-next__card">

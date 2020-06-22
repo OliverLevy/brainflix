@@ -73,10 +73,6 @@
     padding-left: 50px;
     font-size: 1rem;
 
-    &:hover{
-      border: solid $accentHover 2px;
-    }
-
     &:focus{
       outline: none;
       border: solid $accent 2px; 

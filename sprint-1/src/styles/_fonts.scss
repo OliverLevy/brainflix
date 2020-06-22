@@ -79,6 +79,14 @@ h4{
 h5{
   font-size: .75rem;
   line-height: 1.25rem;
+  color: $label;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.date{
+  font-weight: 400;
+  color: $label;
 }
 
 p{
