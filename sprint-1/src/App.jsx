@@ -34,17 +34,19 @@ class App extends React.Component{
 
   submitHandler = (event) => {
     event.preventDefault()
-    this.setState(
-      {comments: [
-        ...this.state.comments, 
-        {
-          name: "Placeholder",
-          comment: event.target.commentBox.value,
-          // timestamp: new Date().toDateString()
-          // timestamp: this.dynaDate("it's 3")
-          timestamp: Date.now()
-        }]
-      })
+    if(event.target.commentBox.value == ""){
+      return alert("There is nothing in your comment, please stop being a hecker.")
+    } else {
+      this.setState(
+        {comments: [
+          ...this.state.comments, 
+          {
+            name: "Placeholder",
+            comment: event.target.commentBox.value,
+            timestamp: Date.now()
+          }]
+        })
+    }
     event.target.reset()
   }
 

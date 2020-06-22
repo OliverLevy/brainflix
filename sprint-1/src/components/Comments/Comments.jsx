@@ -26,7 +26,7 @@ function Comments({submitHandler, comments, dynaDate}){
           <form onSubmit={submitHandler} className="add-comment__form">
             <div className="add-comment__input-container">
               <h5>Join the conversation</h5>
-              <textarea className="add-comment__input" name="commentBox" placeholder="Add a comment"></textarea>
+              <textarea className="add-comment__input" name="commentBox" placeholder="Add a comment" required></textarea>
             </div>
             <button className="add-comment__btn btn">COMMENT</button>
           </form>
