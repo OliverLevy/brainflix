@@ -1,5 +1,4 @@
 import React from 'react'
-import SideData from '../../JSON/side-video-data.json'
 import './SideVideo.scss'
 
 function SideVideo({sideData}){
