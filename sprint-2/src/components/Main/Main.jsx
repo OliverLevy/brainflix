@@ -66,7 +66,7 @@ class Main extends React.Component {
           console.log(success);
           console.log(success.data.comment);
           this.setState({
-            comments: [...this.state.comments, success.data.comment]
+            comments: [...this.state.comments, success.data]
           })
           // axios
           //   .get(
