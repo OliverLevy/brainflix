@@ -13,12 +13,13 @@ class Main extends React.Component {
     mainData: MainData[0],
     comments: MainData[0].comments,
     sideData: SideData,
+    data: SideData,
   };
 
   componentDidMount() {
     axios
       .get(
-        "https://project-2-api.herokuapp.com/videos/1a3cjruucpf7/?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8"
+        "https://project-2-api.herokuapp.com/videos/?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8"
       )
       .then((success) => {
         console.log(success);
@@ -26,8 +27,9 @@ class Main extends React.Component {
         this.setState({
           mainData: success.data,
           comments: success.data.comments,
+          sideData: success.data,
+          data: success.data,
         });
-        // this.setState()
       });
   }
 
@@ -66,31 +68,22 @@ class Main extends React.Component {
           console.log(success);
           console.log(success.data.comment);
           this.setState({
-            comments: [...this.state.comments, success.data]
-          })
-          // axios
-          //   .get(
-          //     "https://project-2-api.herokuapp.com/videos/1a3cjruucpf7/?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8"
-          //   )
-          //   .then((success) => {
-          //     this.setState({
-          //       comments: success.data.comments,
-          //     });
-          //   });
+            comments: [...this.state.comments, success.data],
+          });
         })
-        
+
         .catch((err) => console.log(err));
-      }
+    }
     event.target.reset();
   };
 
   render() {
     return (
       <div className="main">
-        <Hero mainData={this.state.mainData} />
+        {/* <Hero mainData={this.state.mainData} /> */}
 
         <div className="content">
-          <div className="content__main">
+          {/* <div className="content__main">
             <Description mainData={this.state.mainData} />
 
             <Comments
@@ -98,10 +91,10 @@ class Main extends React.Component {
               comments={this.state.comments}
               dynaDate={this.dynaDate}
             />
-          </div>
+          </div> */}
 
           <div className="content__aside">
-            <SideVideo sideData={this.state.sideData} />
+            <SideVideo data={this.state.data} />
           </div>
         </div>
       </div>
