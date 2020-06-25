@@ -3,10 +3,7 @@ import "./Comments.scss";
 import Avatar from "../../assets/Images/Mohan-muruge.jpg";
 
 function Comments({ submitHandler, comments, dynaDate }) {
-  let oldDate = 1592795570711;
-  let testDate = Date.now();
-  console.log((testDate - oldDate) / 1000);
-
+ 
   return (
     <div>
       <div className="add-comment">

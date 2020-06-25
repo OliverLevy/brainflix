@@ -10,21 +10,8 @@ class App extends React.Component {
       <BrowserRouter>
         <Header />
         <Switch>
-          {/* <Route
-            path="/"
-            exact
-            render={(routerProps) => (
-              <Main
-                sideData={this.state.sideData}
-                submitHandler={(event) => this.submitHandler(event)}
-                mainData={this.state.mainData}
-                comments={this.state.comments}
-                dynaDate={this.dynaDate}
-                {...routerProps}
-              />
-            )}
-          /> */}
           <Route path="/" exact component={Main} />
+          <Route path="/video/:id" exact component={Main} />
           <Route path="/uploads" component={Uploads} />
         </Switch>
       </BrowserRouter>

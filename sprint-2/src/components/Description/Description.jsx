@@ -5,15 +5,15 @@ import LikesIcon from '../../assets/Icons/SVG/Icon-likes.svg'
 import './Description.scss'
 
 
-function Description({mainData}){
+function Description({mainVid}){
   return(
     <div className="desc">
-          <h1 className="desc__title">{mainData.title}</h1>
+          <h1 className="desc__title">{mainVid.title}</h1>
           
           <div className="desc__items">
             <div className="desc__channel-container">
-              <h3 className="desc__channel">By {mainData.channel}</h3>
-              <h4 className="date">{mainData.timestamp}</h4>
+              <h3 className="desc__channel">By {mainVid.channel}</h3>
+              <h4 className="date">{mainVid.timestamp}</h4>
             </div>
 
             <div className="desc__stats">
@@ -21,18 +21,18 @@ function Description({mainData}){
               className="desc__views-icon" 
               src={ViewsIcon} 
               alt="views-icon"/>
-              <p>{mainData.views}</p>
+              <p>{mainVid.views}</p>
               <img 
               className="desc__likes-icon" 
               src={LikesIcon} 
               alt="likes-icon"/>
-              <p>{mainData.likes}</p>
+              <p>{mainVid.likes}</p>
             </div>
           </div>
 
           <div className="divider"></div>
 
-          <p className="desc__text">{mainData.description}</p>
+          <p className="desc__text">{mainVid.description}</p>
     </div>
   )
 }
