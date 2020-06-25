@@ -23,11 +23,10 @@ class Main extends React.Component {
       .then((success) => {
         console.log(success);
         console.log(success.data.comments);
-        let reverse = success.data.comments
         this.setState({
           mainData: success.data,
-          comments: reverse
-        })
+          comments: success.data.comments,
+        });
         // this.setState()
       });
   }
@@ -53,23 +52,35 @@ class Main extends React.Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    axios.post("https://project-2-api.herokuapp.com/videos/1a3cjruucpf7/comments?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8",{name: "oliver", comment: event.target.commentBox.value})
     if (event.target.commentBox.value == "") {
       return alert(
         "There is nothing in your comment, please stop being a hecker."
       );
     } else {
-      this.setState({
-        comments: [
-          ...this.state.comments,
-          {
-            name: "Placeholder",
-            comment: event.target.commentBox.value,
-            timestamp: Date.now(),
-          },
-        ],
-      });
-    }
+      axios
+        .post(
+          "https://project-2-api.herokuapp.com/videos/1a3cjruucpf7/comments?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8",
+          { name: "oliver", comment: event.target.commentBox.value }
+        )
+        .then((success) => {
+          console.log(success);
+          console.log(success.data.comment);
+          this.setState({
+            comments: [...this.state.comments, success.data.comment]
+          })
+          // axios
+          //   .get(
+          //     "https://project-2-api.herokuapp.com/videos/1a3cjruucpf7/?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8"
+          //   )
+          //   .then((success) => {
+          //     this.setState({
+          //       comments: success.data.comments,
+          //     });
+          //   });
+        })
+        
+        .catch((err) => console.log(err));
+      }
     event.target.reset();
   };
 
