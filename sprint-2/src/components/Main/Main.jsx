@@ -43,9 +43,7 @@ class Main extends React.Component {
           this.setState({ mainVid: success.data });
         });
     }
-    // if (this.state.mainVid !== prevState.mainVid) {
-    //  return true
-    // }
+    window.scrollTo(0, 0);
   }
 
   dynaDate = (datePosted) => {
@@ -83,10 +81,16 @@ class Main extends React.Component {
           console.log(this.state.mainVid.comments);
           const prev = [...this.state.mainVid.comments];
           const now = success.data;
+          const test = this.state.mainVid;
           const output = [...this.state.mainVid.comments, success.data];
+          test.comments = output;
           console.log(prev);
           console.log(now);
           console.log(output);
+          console.log(test);
+          this.setState({
+            mainVid: test,
+          });
         })
 
         .catch((err) => console.log(err));
