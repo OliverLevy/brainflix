@@ -7,7 +7,6 @@ import "./SideVideo.scss";
 
 
 function SideVideo({ data }) {
-  console.log(data)
   return (
     <div className="up-next">
       <h5 className="up-next__header">NEXT VIDEO</h5>

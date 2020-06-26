@@ -26,7 +26,7 @@ function Header() {
           <Link to="/uploads">
             <button className="header__upload btn">
               <div className="header__upload-items">
-                <img src={UploadBtn} />
+                <img src={UploadBtn} alt="uploads button" />
                 UPLOAD
               </div>
             </button>

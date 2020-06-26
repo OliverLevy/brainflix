@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Hero from "../Hero/Hero";
 import Description from "../Description/Description";
 import Comments from "../Comments/Comments";
@@ -18,32 +17,35 @@ class Main extends React.Component {
     mainData: MainData[0],
     comments: MainData[0].comments,
     data: SideData,
-    mainVid: MainData[0]
+    mainVid: MainData[0],
   };
 
   componentDidMount() {
     axios
       .get(`${url}${api_key}`)
       .then((success) => {
-        console.log(success);
         this.setState({
           data: success.data,
         });
       })
       .catch((err) => console.log(err));
+    axios
+      .get(`${url}${defaultId}${api_key}`)
+      .then((success) => this.setState({ mainVid: success.data }))
+      .catch((err) => alert(err, "something went wrong"));
   }
 
-  componentDidUpdate(prevProps) {
-    console.log(this.props.match.params);
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params !== prevProps.match.params) {
-      console.log("you're on to something");
-      axios.get(`${url}/${this.props.match.params.id}${api_key}`)
-      .then(success => {
-        console.log(success)
-        console.log(this.state.mainVid)
-        this.setState({mainVid: success.data})
-      })
+      axios
+        .get(`${url}/${this.props.match.params.id}${api_key}`)
+        .then((success) => {
+          this.setState({ mainVid: success.data });
+        });
     }
+    // if (this.state.mainVid !== prevState.mainVid) {
+    //  return true
+    // }
   }
 
   dynaDate = (datePosted) => {
@@ -67,22 +69,24 @@ class Main extends React.Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    if (event.target.commentBox.value == "") {
+    if (event.target.commentBox.value === "") {
       return alert(
         "There is nothing in your comment, please stop being a hecker."
       );
     } else {
       axios
-        .post(
-          "https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8",
-          { name: "oliver", comment: event.target.commentBox.value }
-        )
+        .post(`${url}/${this.props.match.params.id}/comments${api_key}`, {
+          name: "Jon Barson",
+          comment: event.target.commentBox.value,
+        })
         .then((success) => {
-          console.log(success);
-          console.log(success.data.comment);
-          this.setState({
-            mainData: [...this.state.data, success.data],
-          });
+          console.log(this.state.mainVid.comments);
+          const prev = [...this.state.mainVid.comments];
+          const now = success.data;
+          const output = [...this.state.mainVid.comments, success.data];
+          console.log(prev);
+          console.log(now);
+          console.log(output);
         })
 
         .catch((err) => console.log(err));
@@ -99,7 +103,7 @@ class Main extends React.Component {
             <Description mainVid={this.state.mainVid} />
             <Comments
               submitHandler={this.submitHandler}
-              comments={this.state.mainVid.comments}
+              mainVid={this.state.mainVid.comments}
               dynaDate={this.dynaDate}
             />
           </div>

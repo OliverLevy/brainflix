@@ -2,7 +2,6 @@ import React from "react";
 import "./Hero.scss";
 
 function Hero({ mainVid }) {
-  console.log("hellldfkjgdf");
   return (
     <div className="hero">
       <div className="hero__vid-container">
@@ -20,7 +19,7 @@ function Hero({ mainVid }) {
         <div className="controls">
           <button className="controls__play"></button>
           <div className="controls__progress">
-            <input
+            <progress
               type="range"
               className="controls__progress-range"
               min="0"

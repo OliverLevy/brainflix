@@ -2,8 +2,7 @@ import React from "react";
 import "./Comments.scss";
 import Avatar from "../../assets/Images/Mohan-muruge.jpg";
 
-function Comments({ submitHandler, comments, dynaDate }) {
- 
+function Comments({ submitHandler, mainVid, dynaDate }) {
   return (
     <div>
       <div className="add-comment">
@@ -35,7 +34,7 @@ function Comments({ submitHandler, comments, dynaDate }) {
         <div className="divider"></div>
       </div>
       <div className="old-comment">
-        {comments.map((comment, id) => {
+        {mainVid.map((comment, id) => {
           return (
             <div key={id}>
               <div className="old-comment__card">
