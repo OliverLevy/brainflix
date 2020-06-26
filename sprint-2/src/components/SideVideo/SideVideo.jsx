@@ -2,15 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./SideVideo.scss";
 
-
-
-
-
-function SideVideo({ data }) {
+function SideVideo({ data, mainVid }) {
+  let upNext = data.filter((item) => item.id !== mainVid.id);
   return (
     <div className="up-next">
       <h5 className="up-next__header">NEXT VIDEO</h5>
-      {data.map((item) => {
+      {upNext.map((item) => {
         return (
           <Link key={item.id} to={`/video/${item.id}`}>
             <div className="up-next__card">

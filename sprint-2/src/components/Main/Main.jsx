@@ -112,7 +112,7 @@ class Main extends React.Component {
             />
           </div>
           <div className="content__aside">
-            <SideVideo data={this.state.data} />
+            <SideVideo data={this.state.data} mainVid={this.state.mainVid} />
           </div>
         </div>
       </div>
