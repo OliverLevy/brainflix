@@ -99,8 +99,16 @@
     }
   }
 
-  &__upload{
+  &__link{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: calc(100% - 48px - 1rem);
+  }
+
+  &__upload{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

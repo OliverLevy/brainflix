@@ -23,7 +23,7 @@ function Header() {
         </div>
 
         <div className="header__upload-container">
-          <Link to="/uploads">
+          <Link to="/uploads" className='header__link btn'>
             <button className="header__upload btn">
               <div className="header__upload-items">
                 <img src={UploadBtn} alt="uploads button" />
