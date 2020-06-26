@@ -35,7 +35,7 @@ class Main extends React.Component {
       .catch((err) => alert(err, "something went wrong"));
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.match.params !== prevProps.match.params) {
       axios
         .get(`${url}/${this.props.match.params.id}${api_key}`)
@@ -43,7 +43,7 @@ class Main extends React.Component {
           this.setState({ mainVid: success.data });
         });
     }
-    window.scrollTo(0, 0);
+    setTimeout( () => window.scrollTo(0, 0), 100)
   }
 
   dynaDate = (datePosted) => {
