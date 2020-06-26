@@ -28,22 +28,48 @@ class Main extends React.Component {
           data: success.data,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
     axios
       .get(`${url}${defaultId}${api_key}`)
-      .then((success) => this.setState({ mainVid: success.data }))
-      .catch((err) => alert(err, "something went wrong"));
+      .then((success) =>
+        this.setState({
+          mainVid: success.data,
+        })
+      )
+      .catch((err) => alert(err));
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.match.params !== prevProps.match.params) {
+  componentDidUpdate(prevProps, prevState) {
+    // if (
+    //   !this.props.match.path.id &&
+    //   this.props.match.params !== prevProps.match.params
+    // ) {
+    //   axios.get(`${url}${defaultId}${api_key}`).then((success) => {
+    //     this.setState({ mainVid: success.data });
+    //     setTimeout(() => window.scrollTo(0, 0), 100);
+    //   });
+    // } else 
+    if (!this.props.match.params.id && (this.props.match.params.id !== prevProps.match.params.id)){
+      console.log("this might work")
+      console.log(this.state.mainVid)
+      axios
+      .get(`${url}${defaultId}${api_key}`)
+      .then((success) => {
+        this.setState({ mainVid: success.data });
+        setTimeout(() => window.scrollTo(0, 0), 100);
+        console.log('infinite loop test')
+      });
+    }
+    else if (this.props.match.params.id !== prevProps.match.params.id) {
       axios
         .get(`${url}/${this.props.match.params.id}${api_key}`)
         .then((success) => {
           this.setState({ mainVid: success.data });
+          setTimeout(() => window.scrollTo(0, 0), 100);
+          console.log(this.state)
         });
     }
-    setTimeout( () => window.scrollTo(0, 0), 100)
+    
   }
 
   dynaDate = (datePosted) => {
@@ -71,7 +97,30 @@ class Main extends React.Component {
       return alert(
         "There is nothing in your comment, please stop being a hecker."
       );
-    } else {
+    } else if (!this.props.match.params.id){
+      axios.post(`${url}${defaultId}/comments${api_key}`,{
+        name: "Jon Barson",
+        comment: event.target.commentBox.value,
+      })
+      .then((success) => {
+        console.log(this.state.mainVid.comments);
+        const prev = [...this.state.mainVid.comments];
+        const now = success.data;
+        const test = this.state.mainVid;
+        const output = [...this.state.mainVid.comments, success.data];
+        test.comments = output;
+        console.log(prev);
+        console.log(now);
+        console.log(output);
+        console.log(test);
+        this.setState({
+          mainVid: test,
+        });
+      })
+        .catch((err) => console.log(err));
+    }
+    
+    else {
       axios
         .post(`${url}/${this.props.match.params.id}/comments${api_key}`, {
           name: "Jon Barson",
@@ -104,7 +153,10 @@ class Main extends React.Component {
         <Hero mainVid={this.state.mainVid} />
         <div className="content">
           <div className="content__main">
-            <Description mainVid={this.state.mainVid} />
+            <Description
+              mainVid={this.state.mainVid}
+              dynaDate={this.dynaDate}
+            />
             <Comments
               submitHandler={this.submitHandler}
               mainVid={this.state.mainVid.comments}

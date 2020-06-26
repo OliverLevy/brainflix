@@ -5,7 +5,7 @@ import LikesIcon from '../../assets/Icons/SVG/Icon-likes.svg'
 import './Description.scss'
 
 
-function Description({mainVid}){
+function Description({mainVid, dynaDate}){
   return(
     <div className="desc">
           <h1 className="desc__title">{mainVid.title}</h1>
@@ -13,7 +13,7 @@ function Description({mainVid}){
           <div className="desc__items">
             <div className="desc__channel-container">
               <h3 className="desc__channel">By {mainVid.channel}</h3>
-              <h4 className="date">{mainVid.timestamp}</h4>
+              <h4 className="date">{dynaDate(mainVid.timestamp)}</h4>
             </div>
 
             <div className="desc__stats">
