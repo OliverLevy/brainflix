@@ -1,22 +1,20 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
-.add-comment{
-  
-
-  &__card{
+.add-comment {
+  &__card {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 2rem 0 0;
   }
-  &__form{
+  &__form {
     display: flex;
     flex-direction: column;
     width: calc(100% - 48px - 16px);
     padding: 0 0 1.5rem;
 
-    @include tablet{
+    @include tablet {
       padding: 0 2.5rem 1.5rem 0;
       flex-direction: row;
       align-items: center;
@@ -24,15 +22,15 @@
     }
   }
 
-  &__input-container{
+  &__input-container {
     width: 100%;
 
-    @include tablet{
+    @include tablet {
       width: calc(100% - 160px - 16px);
     }
   }
 
-  &__input{
+  &__input {
     height: 48px;
     width: 100%;
     resize: none;
@@ -42,38 +40,36 @@
     background: $inputBg;
     font-family: Avenir;
     padding: 12px;
-    transition: height .2s;
+    transition: height 0.2s;
 
-    &::placeholder{
+    &::placeholder {
       color: black;
     }
 
-    @include tablet{
+    @include tablet {
       height: 48px;
     }
 
-    &:focus{
+    &:focus {
       outline: none;
       border: $accent 2px solid;
       height: 96px;
 
-      @include tablet{
+      @include tablet {
         height: 48px;
       }
     }
-
-    
   }
 
-  &__btn{
+  &__btn {
     height: 48px;
 
-    @include tablet{
+    @include tablet {
       width: 160px;
     }
   }
 
-  &__avatar-container{
+  &__avatar-container {
     height: 48px;
     width: 48px;
     border-radius: 24px;
@@ -82,53 +78,54 @@
     top: 20px;
   }
 
-  &__avatar{
+  &__avatar {
     width: auto;
     height: 100%;
   }
 }
 
-.old-comment{
+.old-comment {
   padding: 0 0 2.5rem;
   display: flex;
   flex-direction: column-reverse;
 
-  &__card{
+  &__card {
     display: flex;
     justify-content: space-between;
     padding: 1.5rem 0;
+    position: relative;
   }
 
-  &__avatar{
+  &__avatar {
     height: 48px;
     width: 48px;
     border-radius: 50%;
     background: grey;
   }
 
-  &__items{
+  &__items {
     width: calc(100% - 48px - 16px);
   }
 
-  &__info{
+  &__info {
     display: flex;
     justify-content: space-between;
 
-    @include tablet{
+    @include tablet {
       justify-content: flex-start;
 
-      & h3{
+      & h3 {
         padding-right: 8px;
       }
     }
   }
 
-  &__comment{
+  &__comment {
     width: 100%;
     overflow: hidden;
     overflow-wrap: break-word;
 
-    @include tablet{
+    @include tablet {
       padding-right: 2.5rem;
     }
   }
