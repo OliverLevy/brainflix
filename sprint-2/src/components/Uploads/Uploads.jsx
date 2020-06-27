@@ -6,9 +6,9 @@ function Uploads() {
   return (
     <div className="upload">
       <div className="divider"></div>
-      <h1>Upload Video</h1>
+      <h1 className="upload__header">Upload Video</h1>
       <form className="upload__form">
-        <div className="divider upload__divider"></div>
+        <div className="divider upload__divider upload__divider--top"></div>
         <div className="upload__container">
           <div className="upload__img-container">
             <h5>VIDEO THUMBNAIL</h5>
@@ -19,7 +19,7 @@ function Uploads() {
             />
           </div>
           <div className="upload__text-container">
-            <div className="upload__form-input-container">
+            <div className="upload__form-input-container-top">
               <h5>TITLE YOUR VIDEO</h5>
               <input
                 type="text"
@@ -27,7 +27,7 @@ function Uploads() {
                 placeholder="Add a title to your video"
               />
             </div>
-            <div className="upload__form-input-container">
+            <div className="upload__form-input-container-bottom">
               <h5>ADD A VIDEO DESCRIPTION</h5>
               <textarea
                 name=""
@@ -37,7 +37,7 @@ function Uploads() {
             </div>
           </div>
         </div>
-        <div className="divider upload__divider"></div>
+        <div className="divider upload__divider upload__divider--bottom"></div>
         <div className="upload__btn-container">
           <button className="upload__cancel">
             <h3>CANCEL</h3>
