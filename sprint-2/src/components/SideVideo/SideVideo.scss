@@ -12,6 +12,13 @@
       padding: 2.5rem 0;
     }
   }
+
+  &__link{
+    text-decoration: none;
+    &:visited{
+      color: $primary;
+    }
+  }
   
   &__card{
     width: 100%;

@@ -14,7 +14,7 @@ function Hero({ mainVid }) {
           }
           poster={process.env.PUBLIC_URL + mainVid.image}
           alt="Hero img"
-          controls
+          // controls
         />
         <div className="controls">
           <button className="controls__play"></button>

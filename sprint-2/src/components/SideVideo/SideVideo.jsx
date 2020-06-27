@@ -9,7 +9,11 @@ function SideVideo({ data, mainVid }) {
       <h5 className="up-next__header">NEXT VIDEO</h5>
       {upNext.map((item) => {
         return (
-          <Link key={item.id} to={`/video/${item.id}`}>
+          <Link
+            key={item.id}
+            to={`/video/${item.id}`}
+            className="up-next__link"
+          >
             <div className="up-next__card">
               <div className="up-next__img-container">
                 <img
