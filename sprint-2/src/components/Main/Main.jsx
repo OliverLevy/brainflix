@@ -103,18 +103,11 @@ class Main extends React.Component {
         comment: event.target.commentBox.value,
       })
       .then((success) => {
-        console.log(this.state.mainVid.comments);
-        const prev = [...this.state.mainVid.comments];
-        const now = success.data;
-        const test = this.state.mainVid;
-        const output = [...this.state.mainVid.comments, success.data];
-        test.comments = output;
-        console.log(prev);
-        console.log(now);
-        console.log(output);
-        console.log(test);
+        const oldData = this.state.mainVid;
+        const newData = [...this.state.mainVid.comments, success.data];
+        oldData.comments = newData;
         this.setState({
-          mainVid: test,
+          mainVid: oldData,
         });
       })
         .catch((err) => console.log(err));
@@ -127,18 +120,11 @@ class Main extends React.Component {
           comment: event.target.commentBox.value,
         })
         .then((success) => {
-          console.log(this.state.mainVid.comments);
-          const prev = [...this.state.mainVid.comments];
-          const now = success.data;
-          const test = this.state.mainVid;
-          const output = [...this.state.mainVid.comments, success.data];
-          test.comments = output;
-          console.log(prev);
-          console.log(now);
-          console.log(output);
-          console.log(test);
+          const oldData = this.state.mainVid;
+          const newData = [...this.state.mainVid.comments, success.data];
+          oldData.comments = newData;
           this.setState({
-            mainVid: test,
+            mainVid: oldData,
           });
         })
 
