@@ -2,7 +2,7 @@ import React from "react";
 import "./Comments.scss";
 import Avatar from "../../assets/Images/Mohan-muruge.jpg";
 
-function Comments({ submitHandler, mainVid, dynaDate }) {
+function Comments({ submitHandler, mainVid, dynaDate, deleteHandler }) {
   return (
     <div>
       <div className="add-comment">
@@ -47,6 +47,7 @@ function Comments({ submitHandler, mainVid, dynaDate }) {
                   </div>
                   <p className="old-comment__comment">{comment.comment}</p>
                 </div>
+                <button onClick={() => deleteHandler(id)}>Delete</button>
               </div>
               <div className="divider"></div>
             </div>

@@ -39,37 +39,27 @@ class Main extends React.Component {
       .catch((err) => alert(err));
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // if (
-    //   !this.props.match.path.id &&
-    //   this.props.match.params !== prevProps.match.params
-    // ) {
-    //   axios.get(`${url}${defaultId}${api_key}`).then((success) => {
-    //     this.setState({ mainVid: success.data });
-    //     setTimeout(() => window.scrollTo(0, 0), 100);
-    //   });
-    // } else 
-    if (!this.props.match.params.id && (this.props.match.params.id !== prevProps.match.params.id)){
-      console.log("this might work")
-      console.log(this.state.mainVid)
-      axios
-      .get(`${url}${defaultId}${api_key}`)
-      .then((success) => {
+  componentDidUpdate(prevProps) {
+    if (
+      !this.props.match.params.id &&
+      this.props.match.params.id !== prevProps.match.params.id
+    ) {
+      console.log("this might work");
+      console.log(this.state.mainVid);
+      axios.get(`${url}${defaultId}${api_key}`).then((success) => {
         this.setState({ mainVid: success.data });
         setTimeout(() => window.scrollTo(0, 0), 100);
-        console.log('infinite loop test')
+        console.log("infinite loop test");
       });
-    }
-    else if (this.props.match.params.id !== prevProps.match.params.id) {
+    } else if (this.props.match.params.id !== prevProps.match.params.id) {
       axios
         .get(`${url}/${this.props.match.params.id}${api_key}`)
         .then((success) => {
           this.setState({ mainVid: success.data });
           setTimeout(() => window.scrollTo(0, 0), 100);
-          console.log(this.state)
+          console.log(this.state);
         });
     }
-    
   }
 
   dynaDate = (datePosted) => {
@@ -97,23 +87,22 @@ class Main extends React.Component {
       return alert(
         "There is nothing in your comment, please stop being a hecker."
       );
-    } else if (!this.props.match.params.id){
-      axios.post(`${url}${defaultId}/comments${api_key}`,{
-        name: "Jon Barson",
-        comment: event.target.commentBox.value,
-      })
-      .then((success) => {
-        const oldData = this.state.mainVid;
-        const newData = [...this.state.mainVid.comments, success.data];
-        oldData.comments = newData;
-        this.setState({
-          mainVid: oldData,
-        });
-      })
+    } else if (!this.props.match.params.id) {
+      axios
+        .post(`${url}${defaultId}/comments${api_key}`, {
+          name: "Jon Barson",
+          comment: event.target.commentBox.value,
+        })
+        .then((success) => {
+          const oldData = this.state.mainVid;
+          const newData = [...this.state.mainVid.comments, success.data];
+          oldData.comments = newData;
+          this.setState({
+            mainVid: oldData,
+          });
+        })
         .catch((err) => console.log(err));
-    }
-    
-    else {
+    } else {
       axios
         .post(`${url}/${this.props.match.params.id}/comments${api_key}`, {
           name: "Jon Barson",
@@ -127,10 +116,17 @@ class Main extends React.Component {
             mainVid: oldData,
           });
         })
-
         .catch((err) => console.log(err));
     }
     event.target.reset();
+  };
+
+  deleteHandler = (id) => {
+    // event.preventDefault();
+    console.log("hi bert");
+    console.log(id);
+
+    // axios.delete(`${url}/${this.props.match.params.id}/comments/`)
   };
 
   render() {
@@ -145,6 +141,7 @@ class Main extends React.Component {
             />
             <Comments
               submitHandler={this.submitHandler}
+              deleteHandler={this.deleteHandler}
               mainVid={this.state.mainVid.comments}
               dynaDate={this.dynaDate}
             />
