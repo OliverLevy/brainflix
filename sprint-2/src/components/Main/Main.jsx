@@ -14,8 +14,6 @@ const defaultId = "/1af0jruup5gu";
 
 class Main extends React.Component {
   state = {
-    mainData: MainData[0],
-    comments: MainData[0].comments,
     data: SideData,
     mainVid: MainData[0],
   };
@@ -94,6 +92,7 @@ class Main extends React.Component {
           comment: event.target.commentBox.value,
         })
         .then((success) => {
+          console.log(success)
           const oldData = this.state.mainVid;
           const newData = [...this.state.mainVid.comments, success.data];
           oldData.comments = newData;
