@@ -14,6 +14,8 @@ const defaultId = "/1af0jruup5gu";
 
 class Main extends React.Component {
   state = {
+    mainData: MainData[0],
+    comments: MainData[0].comments,
     data: SideData,
     mainVid: MainData[0],
   };
