@@ -39,7 +39,6 @@ function Comments({ submitHandler, mainVid, dynaDate, deleteHandler }) {
             <div key={id}>
               <div className="old-comment__card">
                 <div className="old-comment__avatar"></div>
-
                 <div className="old-comment__items">
                   <div className="old-comment__info">
                     <h3>{comment.name}</h3>
@@ -47,7 +46,14 @@ function Comments({ submitHandler, mainVid, dynaDate, deleteHandler }) {
                   </div>
                   <p className="old-comment__comment">{comment.comment}</p>
                 </div>
-                <button onClick={() => deleteHandler(id)}>Delete</button>
+                <div className="old-comment__delete">
+                  <button
+                    className="old-comment__delete-btn"
+                    onClick={() => deleteHandler(comment.id)}
+                  >
+                    X
+                  </button>
+                </div>
               </div>
               <div className="divider"></div>
             </div>

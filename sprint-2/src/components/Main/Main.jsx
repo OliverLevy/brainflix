@@ -44,12 +44,9 @@ class Main extends React.Component {
       !this.props.match.params.id &&
       this.props.match.params.id !== prevProps.match.params.id
     ) {
-      console.log("this might work");
-      console.log(this.state.mainVid);
       axios.get(`${url}${defaultId}${api_key}`).then((success) => {
         this.setState({ mainVid: success.data });
         setTimeout(() => window.scrollTo(0, 0), 100);
-        console.log("infinite loop test");
       });
     } else if (this.props.match.params.id !== prevProps.match.params.id) {
       axios
@@ -57,7 +54,6 @@ class Main extends React.Component {
         .then((success) => {
           this.setState({ mainVid: success.data });
           setTimeout(() => window.scrollTo(0, 0), 100);
-          console.log(this.state);
         });
     }
   }
@@ -94,7 +90,6 @@ class Main extends React.Component {
           comment: event.target.commentBox.value,
         })
         .then((success) => {
-          console.log(success)
           const oldData = this.state.mainVid;
           const newData = [...this.state.mainVid.comments, success.data];
           oldData.comments = newData;
@@ -123,11 +118,32 @@ class Main extends React.Component {
   };
 
   deleteHandler = (id) => {
-    // event.preventDefault();
-    console.log("hi bert");
-    console.log(id);
-
-    // axios.delete(`${url}/${this.props.match.params.id}/comments/`)
+    if (!this.props.match.params.id) {
+      axios
+        .delete(`${url}${defaultId}/comments/${id}${api_key}`)
+        .then((success) => {
+          const oldData = this.state.mainVid;
+          const newData = oldData.comments.filter(item => item.id !== id)
+          // const newData = [...this.state.mainVid.comments, success.data];
+          oldData.comments = newData;
+          this.setState({
+            mainVid: oldData,
+          });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .delete(`${url}/${this.props.match.params.id}/comments/${id}${api_key}`)
+        .then((success) => {
+          const oldData = this.state.mainVid;
+          const newData = oldData.comments.filter(item => item.id !== id)
+          oldData.comments = newData;
+          this.setState({
+            mainVid: oldData,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   render() {
