@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content{
+  padding: 0 1rem 0;
+  transition: all .2s;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet{
+    padding: 0 1.5rem 0;
+  }
+
+  @include desktop{
+    padding: 0 11.25rem 0;
+    flex-direction: row;
+    justify-content: space-between;
+    // max-width: 1440px;
+  }
+
+  &__main{
+
+    @include desktop{
+      max-width: 712px;
+      border-right: $divider solid 1px;
+    }
+  }
+
+  &__aside{
+
+    @include desktop{
+      min-width: calc(100% - 712px - 24px);
+      padding-left: 1.5rem;
+    }
+  }
+}
+

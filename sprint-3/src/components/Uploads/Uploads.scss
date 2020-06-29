@@ -1,0 +1,146 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.upload {
+  padding: 0 1rem;
+  width: 100%;
+
+  @include tablet{
+    padding: 0 1.5rem;
+  }
+
+  @include desktop{
+    padding: 0 11.25rem;
+  }
+
+  &__header{
+    padding: 1.5rem 0 2rem;
+
+    @include tablet{
+      padding: 3rem 0 2rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container{
+    @include desktop{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__text-container{
+   @include desktop{
+    width: calc(100% - 344px - 24px);
+   }
+  }
+
+  &__form-input {
+    width: 100%;
+    height: 48px;
+    outline: none;
+    border-radius: 4px;
+    border: solid $inputBorder 2px;
+    background-color: $inputBg;
+    font-family: Avenir;
+    padding: 1rem;
+  }
+
+  &__form-input-container-top{
+    padding: 1.5rem 0 0;
+
+    @include desktop{
+      padding: 0;
+    }
+  }
+
+  &__form-input-container-bottom{
+    padding: 1.5rem 0 0;
+  }
+
+  &__form-input-text {
+    width: 100%;
+    height: 48px;
+  }
+
+  &__form-text-area {
+    width: 100%;
+    height: 143px;
+    resize: none;
+
+    @include desktop{
+      height: 94px;
+    }
+  }
+
+ 
+  &__img {
+    width: 100%;
+    max-width: 344px;
+    padding: 0 0 .5rem;
+  }
+
+  &__btn-container {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 2rem 0 0;
+
+    @include tablet{
+      flex-direction: row;
+      justify-content: flex-end;
+      margin: 2.5rem 0 0;
+    }
+  }
+
+  &__btn {
+    height: 48px;
+    outline: none;
+    margin: 0 0 .5rem;
+    
+
+    &:focus {
+      outline: none;
+    }
+
+    @include tablet{
+      width: 160px;
+    }
+    
+  }
+
+  &__cancel {
+    height: 48px;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: $accent;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include tablet{
+      width: 160px;
+    }
+  }
+
+  &__divider{
+    display: none;
+
+    @include tablet{
+      display: block;
+    }
+
+    &--top{
+      margin: 0 0 2.5rem;
+    }
+
+    &--bottom{
+      margin: 2.5rem 0 0;
+    }
+  }
+}
