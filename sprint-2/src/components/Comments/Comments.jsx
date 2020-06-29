@@ -16,7 +16,6 @@ function Comments({ submitHandler, mainVid, dynaDate, deleteHandler }) {
               alt="user-avatar"
             />
           </div>
-
           <form onSubmit={submitHandler} className="add-comment__form">
             <div className="add-comment__input-container">
               <h5>Join the conversation</h5>
