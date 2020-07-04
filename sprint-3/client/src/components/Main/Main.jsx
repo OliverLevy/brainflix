@@ -4,8 +4,7 @@ import Hero from "../Hero/Hero";
 import Description from "../Description/Description";
 import Comments from "../Comments/Comments";
 import SideVideo from "../SideVideo/SideVideo";
-import MainData from "../../JSON/main-video-data.json";
-import SideData from "../../JSON/side-video-data.json";
+// import SideData from "../../JSON/side-video-data.json";
 import "./Main.scss";
 
 const url = "https://project-2-api.herokuapp.com/videos";
@@ -14,29 +13,40 @@ const defaultId = "/1af0jruup5gu";
 
 class Main extends React.Component {
   state = {
-    mainData: MainData[0],
-    comments: MainData[0].comments,
-    data: SideData,
-    mainVid: MainData[0],
+    // mainData: MainData[0],
+    // comments: MainData[0].comments,
+    data: [],
+    mainVid: [],
   };
 
   componentDidMount() {
     axios
-      .get('video-list')
+      .get("video-list")
       .then((success) => {
+        console.log(success.data[0].id);
         this.setState({
           data: success.data,
         });
+        axios
+          .get(`video/${success.data[0].id}`)
+          .then((success) =>
+            this.setState({
+              mainVid: success.data,
+            })
+          )
+          .catch((err) => alert("or is this it?", err));
       })
-      .catch((err) => alert(err));
-    axios
-      .get(`${url}${defaultId}${api_key}`)
-      .then((success) =>
-        this.setState({
-          mainVid: success.data,
-        })
-      )
-      .catch((err) => alert(err));
+      .catch((err) => alert("is this it?", err));
+    // axios
+    //   .get(`${url}${defaultId}${api_key}`)
+    //   .then((success) =>
+    //     this.setState({
+    //       mainVid: success.data,
+    //     })
+    //   )
+    //   .catch((err) => alert(err));
+     console.log(this.state.data)
+     console.log(this.state.mainVid)
   }
 
   componentDidUpdate(prevProps) {
@@ -49,14 +59,14 @@ class Main extends React.Component {
         setTimeout(() => window.scrollTo(0, 0), 100);
       });
     } else if (this.props.match.params.id !== prevProps.match.params.id) {
-      axios
-        .get(`${this.props.match.params.id}`)
-        .then((success) => {
-          console.log(success)
-          this.setState({ mainVid: success.data });
-          setTimeout(() => window.scrollTo(0, 0), 100);
-        });
+      axios.get(`${this.props.match.params.id}`).then((success) => {
+        console.log(success);
+        this.setState({ mainVid: success.data });
+        setTimeout(() => window.scrollTo(0, 0), 100);
+      });
     }
+    console.log(this.state.data)
+    console.log(this.state.mainVid)
   }
 
   dynaDate = (datePosted) => {
@@ -79,11 +89,9 @@ class Main extends React.Component {
   };
 
   submitHandler = (event) => {
-
-    axios.get(`${this.props.match.params.id}`)
-    .then(success => {
-      console.log(success)
-    })
+    axios.get(`${this.props.match.params.id}`).then((success) => {
+      console.log(success);
+    });
 
     event.preventDefault();
     if (event.target.commentBox.value === "") {
@@ -130,7 +138,7 @@ class Main extends React.Component {
         .delete(`${url}${defaultId}/comments/${id}${api_key}`)
         .then((success) => {
           const oldData = this.state.mainVid;
-          const newData = oldData.comments.filter(item => item.id !== id)
+          const newData = oldData.comments.filter((item) => item.id !== id);
           // const newData = [...this.state.mainVid.comments, success.data];
           oldData.comments = newData;
           this.setState({
@@ -143,7 +151,7 @@ class Main extends React.Component {
         .delete(`${url}/${this.props.match.params.id}/comments/${id}${api_key}`)
         .then((success) => {
           const oldData = this.state.mainVid;
-          const newData = oldData.comments.filter(item => item.id !== id)
+          const newData = oldData.comments.filter((item) => item.id !== id);
           oldData.comments = newData;
           this.setState({
             mainVid: oldData,
@@ -154,28 +162,38 @@ class Main extends React.Component {
   };
 
   render() {
-    return (
-      <div className="main">
-        <Hero mainVid={this.state.mainVid} />
-        <div className="content">
-          <div className="content__main">
-            <Description
-              mainVid={this.state.mainVid}
-              dynaDate={this.dynaDate}
-            />
-            <Comments
-              submitHandler={this.submitHandler}
-              deleteHandler={this.deleteHandler}
-              mainVid={this.state.mainVid.comments}
-              dynaDate={this.dynaDate}
-            />
-          </div>
-          <div className="content__aside">
-            <SideVideo data={this.state.data} mainVid={this.state.mainVid} />
+    if (this.state.data.length === 0 || this.state.mainVid.length === 0) {
+      console.log('loading in progress')
+      console.log(this.state.data)
+      return (
+        <div>
+          <h1>loading</h1>
+        </div>
+      )
+    } else {
+      return (
+        <div className="main">
+          <Hero mainVid={this.state.mainVid} />
+          <div className="content">
+            <div className="content__main">
+              <Description
+                mainVid={this.state.mainVid}
+                dynaDate={this.dynaDate}
+              />
+              <Comments
+                submitHandler={this.submitHandler}
+                deleteHandler={this.deleteHandler}
+                mainVid={this.state.mainVid.comments}
+                dynaDate={this.dynaDate}
+              />
+            </div>
+            <div className="content__aside">
+              <SideVideo data={this.state.data} mainVid={this.state.mainVid} />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
