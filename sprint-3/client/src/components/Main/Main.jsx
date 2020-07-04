@@ -22,7 +22,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`${url}${api_key}`)
+      .get('video-list')
       .then((success) => {
         this.setState({
           data: success.data,
@@ -78,6 +78,12 @@ class Main extends React.Component {
   };
 
   submitHandler = (event) => {
+
+    axios.get(`${this.props.match.params.id}`)
+    .then(success => {
+      console.log(success)
+    })
+
     event.preventDefault();
     if (event.target.commentBox.value === "") {
       return alert(

@@ -1,15 +1,28 @@
-//const url = "https://project-2-api.herokuapp.com/videos";
-//const api_key = "?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8";
-//const defaultId = "/1af0jruup5gu";
+const express = require('express')
+const app = express();
+const bodyParser = require('body-parser')
 
-const axios = require('axios');
-const fs = require('fs');
+app.use(bodyParser.json())
 
-axios.get('https://project-2-api.herokuapp.com/videos?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8')
-.then(suc => {
-  console.log(suc)
-  fs.writeFile(
-    "./data/videos-list.json", 
-    JSON.stringify(suc.data, null, 2), 
-    (err) => console.log(err))
+const cors = require('cors')
+app.use(cors())
+
+
+const upNext = require('./data/videos-list.json')
+const mainVideoList = require('./data/test.json')
+
+
+
+
+app.get('/video-list', (req, res) => {
+  res.send(upNext)
 })
+
+app.get('/video/:id', (req, res) => {
+  let reqId = req.params.id
+  let mainVideo = mainVideoList.filter(item => item.id === reqId)
+  res.json(mainVideo[0])
+})
+
+app.listen(8080, () => console.info('running on 8080'))
+
