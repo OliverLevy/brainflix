@@ -20,36 +20,18 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
+    console.log("the component did mount");
     axios
       .get("video-list")
       .then((success) => {
-        console.log(success.data[0].id);
         this.setState({
           data: success.data,
         });
-        axios
-          .get(`video/${success.data[0].id}`)
-          .then((success) =>
-            this.setState({
-              mainVid: success.data,
-            })
-          )
-          .catch((err) => alert("or is this it?", err));
       })
       .catch((err) => alert("is this it?", err));
-    // axios
-    //   .get(`${url}${defaultId}${api_key}`)
-    //   .then((success) =>
-    //     this.setState({
-    //       mainVid: success.data,
-    //     })
-    //   )
-    //   .catch((err) => alert(err));
-     console.log(this.state.data)
-     console.log(this.state.mainVid)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, _prevState) {
     if (
       !this.props.match.params.id &&
       this.props.match.params.id !== prevProps.match.params.id
@@ -60,14 +42,25 @@ class Main extends React.Component {
       });
     } else if (this.props.match.params.id !== prevProps.match.params.id) {
       axios.get(`${this.props.match.params.id}`).then((success) => {
-        console.log(success);
         this.setState({ mainVid: success.data });
         setTimeout(() => window.scrollTo(0, 0), 100);
       });
     }
-    console.log(this.state.data)
-    console.log(this.state.mainVid)
   }
+
+  setMainVideo = () => {
+    const id = this.state.data[0].id;
+    axios
+      .get(`video/${id}`)
+      .then((success) => {
+        console.log(success);
+        this.setState({
+          mainVid: success.data,
+        });
+      })
+      .catch((err) => alert("or is this it?", err));
+  };
+
 
   dynaDate = (datePosted) => {
     let seconds = (Date.now() - datePosted) / 1000;
@@ -161,16 +154,20 @@ class Main extends React.Component {
     }
   };
 
+  
+
   render() {
     if (this.state.data.length === 0 || this.state.mainVid.length === 0) {
-      console.log('loading in progress')
-      console.log(this.state.data)
+      if (this.state.data[0]) {
+        this.setMainVideo();
+      }
       return (
-        <div>
-          <h1>loading</h1>
+        <div className="main__loading">
+          <h1>loading...</h1>
         </div>
-      )
+      );
     } else {
+      console.log("after all the get requests", this.state);
       return (
         <div className="main">
           <Hero mainVid={this.state.mainVid} />

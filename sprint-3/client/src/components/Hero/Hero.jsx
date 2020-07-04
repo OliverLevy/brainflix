@@ -7,14 +7,10 @@ function Hero({ mainVid }) {
       <div className="hero__vid-container">
         <video
           className="hero__vid"
-          src={
-            process.env.PUBLIC_URL +
-            mainVid.video +
-            "?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8"
-          }
-          poster={process.env.PUBLIC_URL + mainVid.image}
+          src={mainVid.video}
+          poster={mainVid.image}
           alt="Hero img"
-          // controls
+          controls
         />
         <div className="controls">
           <button className="controls__play"></button>

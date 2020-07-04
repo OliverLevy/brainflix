@@ -6,6 +6,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 }
 
 .content{
