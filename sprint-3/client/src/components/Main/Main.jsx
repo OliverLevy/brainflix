@@ -50,8 +50,9 @@ class Main extends React.Component {
       });
     } else if (this.props.match.params.id !== prevProps.match.params.id) {
       axios
-        .get(`${url}/${this.props.match.params.id}${api_key}`)
+        .get(`${this.props.match.params.id}`)
         .then((success) => {
+          console.log(success)
           this.setState({ mainVid: success.data });
           setTimeout(() => window.scrollTo(0, 0), 100);
         });
