@@ -22,13 +22,13 @@ class Main extends React.Component {
   componentDidMount() {
     console.log("the component did mount");
     axios
-      .get("video-list")
+      .get("/video-list")
       .then((success) => {
         this.setState({
           data: success.data,
         });
       })
-      .catch((err) => alert("is this it?", err));
+      .catch((err) => alert(err));
   }
 
   componentDidUpdate(prevProps, _prevState) {
@@ -45,20 +45,29 @@ class Main extends React.Component {
         this.setState({ mainVid: success.data });
         setTimeout(() => window.scrollTo(0, 0), 100);
       });
+    } else if (!this.state.data) {
+      console.log(this.state.data)
+      axios.get('/video-list')
+      .then(suc => {
+        console.log(suc)
+        this.setState({
+          data: suc.data
+        })
+      })
+      .catch(err => console.error(err))
     }
   }
 
-  setMainVideo = () => {
+  setDefaultVideo = () => {
     const id = this.state.data[0].id;
     axios
-      .get(`video/${id}`)
+      .get(`/video/${id}`)
       .then((success) => {
-        console.log(success);
         this.setState({
           mainVid: success.data,
         });
       })
-      .catch((err) => alert("or is this it?", err));
+      .catch((err) => alert(err));
   };
 
 
@@ -154,20 +163,18 @@ class Main extends React.Component {
     }
   };
 
-  
 
   render() {
     if (this.state.data.length === 0 || this.state.mainVid.length === 0) {
       if (this.state.data[0]) {
-        this.setMainVideo();
+        this.setDefaultVideo();
       }
       return (
         <div className="main__loading">
           <h1>loading...</h1>
         </div>
-      );
+      )
     } else {
-      console.log("after all the get requests", this.state);
       return (
         <div className="main">
           <Hero mainVid={this.state.mainVid} />
