@@ -15,7 +15,7 @@ const mainVideoList = require('./data/main-video.json')
 
 
 app.get('/video-list', (req, res) => {
-  res.send(upNext)
+  res.json(upNext)
 })
 
 app.get('/video/:id', (req, res) => {
