@@ -9,7 +9,7 @@ app.use(cors())
 
 
 const upNext = require('./data/videos-list.json')
-const mainVideoList = require('./data/test.json')
+const mainVideoList = require('./data/main-video.json')
 
 
 
