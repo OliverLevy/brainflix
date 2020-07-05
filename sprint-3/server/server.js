@@ -12,9 +12,47 @@ app.use(cors());
 const upNext = require("./data/videos-list.json");
 const mainVideoList = require("./data/main-video.json");
 
-app.get("/video-list", (req, res) => {
-  res.json(upNext);
-});
+newMainVideo = (upload, newId) => {
+  let output = {
+    id: newId,
+    title: upload.title,
+    channel: "PlaceHolder",
+    image: upload.image,
+    description: upload.description,
+    views: "0",
+    likes: "0",
+    duration: "4:20",
+    video:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+    timestamp: Date.now(),
+    comments: [],
+  };
+  return output;
+};
+
+newNextVideo = (upload, newId) => {
+  let output = {
+    id: newId,
+    title: upload.title,
+    channel: "PlaceHolder",
+    image: upload.image,
+  };
+  return output;
+};
+
+app
+  .route("/video")
+  .get((req, res) => {
+    res.json(upNext);
+  })
+  .post((req, res) => {
+    const newId = uuidv4()
+    const outputMainVid = newMainVideo(req.body.upload, newId);
+    const outputNextVid = newNextVideo(req.body.upload, newId);
+    mainVideoList.push(outputMainVid);
+    upNext.push(outputNextVid);
+    res.json(mainVideoList);
+  });
 
 app.get("/video/:id", (req, res) => {
   let reqId = req.params.id;

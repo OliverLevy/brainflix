@@ -13,15 +13,29 @@ class Main extends React.Component {
     mainVid: [],
   };
 
+  setDefaultVideo = () => {
+    let id = this.state.data[0].id;
+    axios
+      .get(`/video/${id}`)
+      .then((success) => {
+        this.setState({
+          mainVid: success.data,
+        });
+      })
+      .catch((err) => alert(err));
+      console.log(id)
+  };
+
   componentDidMount() {
     axios
-      .get("/video-list")
+      .get("/video")
       .then((success) => {
         this.setState({
           data: success.data,
         });
       })
       .catch((err) => alert(err));
+      console.log('component mounted')
   }
 
   componentDidUpdate(prevProps, _prevState) {
@@ -35,17 +49,7 @@ class Main extends React.Component {
     }
   }
 
-  setDefaultVideo = () => {
-    const id = this.state.data[0].id;
-    axios
-      .get(`/video/${id}`)
-      .then((success) => {
-        this.setState({
-          mainVid: success.data,
-        });
-      })
-      .catch((err) => alert(err));
-  };
+  
 
   setMainVideo = () => {
     const endpoint = this.props.match.params.id;

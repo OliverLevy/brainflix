@@ -6,24 +6,37 @@ import LikesIcon from "../../assets/Icons/SVG/Icon-likes.svg";
 class Comments extends React.Component {
   state = {
     likeBtnOff: "old-comment__like--off",
-    likeBtnOn: "old-comment__like--on"
+    likeBtnOn: "old-comment__like--on",
   };
 
   likeBtnClassName = (likes) => {
     if (likes === 0) {
-      return this.state.likeBtnOff
+      return this.state.likeBtnOff;
     } else {
-      return this.state.likeBtnOn
+      return this.state.likeBtnOn;
     }
   };
 
   render() {
-    const { submitHandler, mainVid, dynaDate, deleteHandler,likeCommentHandler } = this.props;
+    const {
+      submitHandler,
+      mainVid,
+      dynaDate,
+      deleteHandler,
+      likeCommentHandler,
+    } = this.props;
+
+    const Comments = () => {
+      if (mainVid.length === 1) {
+        return <h3>{mainVid.length} Comment</h3>;
+      } else {
+        return <h3>{mainVid.length} Comments</h3>;
+      }
+    };
     return (
       <div>
         <div className="add-comment">
-          <h3>3 Comments</h3>
-
+          <Comments />
           <div className="add-comment__card">
             <div className="add-comment__avatar-container">
               <img
@@ -66,12 +79,17 @@ class Comments extends React.Component {
                         <button
                           className="old-comment__like"
                           onClick={() => {
-                            
-                            likeCommentHandler(comment.id)
+                            likeCommentHandler(comment.id);
                           }}
                         >
-                          <img className="old-comment__like-img" src={LikesIcon} alt="likeIcon" />
-                          <p className={this.likeBtnClassName(comment.likes)}>{comment.likes}</p>
+                          <img
+                            className="old-comment__like-img"
+                            src={LikesIcon}
+                            alt="likeIcon"
+                          />
+                          <p className={this.likeBtnClassName(comment.likes)}>
+                            {comment.likes}
+                          </p>
                         </button>
                         <button
                           className="old-comment__delete-btn"
