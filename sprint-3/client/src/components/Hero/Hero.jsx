@@ -11,6 +11,7 @@ function Hero({ mainVid }) {
           poster={mainVid.image}
           alt="Hero img"
           controls
+          muted
         />
         <div className="controls">
           <button className="controls__play"></button>

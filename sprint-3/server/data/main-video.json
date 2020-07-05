@@ -8,7 +8,7 @@
     "views": "1,001,023",
     "likes": "110,985",
     "duration": "4:01",
-    "video": "https://vod-progressive.akamaized.net/exp=1593907988~acl=%2A%2F1315753427.mp4%2A~hmac=d7ecaf11d412a3687e35138f1968e032dfc4635cbedeaa5aaf640f7d5082bb32/vimeo-prod-skyfire-std-us/01/1715/13/333575122/1315753427.mp4?filename=Pexels+Videos+2257000.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     "timestamp": 1545162149000,
     "comments": [
       {
@@ -43,7 +43,7 @@
     "views": "2,043,765",
     "likes": "400,058",
     "duration": "7:26",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908064~acl=%2A%2F1313351418.mp4%2A~hmac=68c491a6d5ea07bdc3701f134cc1a25694af445a1082e97f1b17e4b3d42c00cd/vimeo-prod-skyfire-std-us/01/1636/13/333181933/1313351418.mp4?filename=Pexels+Videos+2249541.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     "timestamp": 1537003624000,
     "comments": [
       {
@@ -78,7 +78,7 @@
     "views": "16,950",
     "likes": "3,856",
     "duration": "4:13",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908078~acl=%2A%2F652878254.mp4%2A~hmac=3f520d2d8103282f31c1b1ef7355f5d7d9450e5d43cde02de988cf94388a4450/vimeo-prod-skyfire-std-us/01/3991/7/194957491/652878254.mp4?filename=Video+Of+Boat+Approaching+Port.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "timestamp": 1534234842000,
     "comments": [
       {
@@ -113,7 +113,7 @@
     "views": "739,945",
     "likes": "98,352",
     "duration": "8:34",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908094~acl=%2A%2F627977826.mp4%2A~hmac=231e7449ebccedb0b792d15c9d86984a48fdfc472d928953a01253f417d50b95/vimeo-prod-skyfire-std-us/01/2883/7/189416691/627977826.mp4?filename=Aerial+Shot+Of+Sea.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "timestamp": 1536070744000,
     "comments": [
       {
@@ -148,7 +148,7 @@
     "views": "72,342",
     "likes": "8,785",
     "duration": "2:59",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908111~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2776%2F15%2F388882515%2F1641891594.mp4~hmac=30f03d35e91a6a5ee43ec7f063084a198c144a35d1e5cb14df3719b16c882886/vimeo-prod-skyfire-std-us/01/2776/15/388882515/1641891594.mp4?filename=video.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "timestamp": 1518625200000,
     "comments": [
       {
@@ -183,7 +183,7 @@
     "views": "345,987",
     "likes": "76,588",
     "duration": "12:26",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908127~acl=%2A%2F713842781.mp4%2A~hmac=4a2c2751767b92c3ae939b465eddea7159b9cace8b69d3ded128323b91455bcc/vimeo-prod-skyfire-std-us/01/1759/8/208797058/713842781.mp4?filename=Boat+Passing.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "timestamp": 1545377524000,
     "comments": [
       {
@@ -218,7 +218,7 @@
     "views": "252,796",
     "likes": "4,905",
     "duration": "7:31",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908141~acl=%2A%2F1287482847.mp4%2A~hmac=6f8d0c479362afd2e9a21000ee204b993950f01f0a07855595fa0bc821b16812/vimeo-prod-skyfire-std-us/01/689/13/328447532/1287482847.mp4?filename=Pexels+Videos+2099323.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     "timestamp": 1520167535028,
     "comments": [
       {
@@ -253,7 +253,7 @@
     "views": "29,984",
     "likes": "2,552",
     "duration": "5:58",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908159~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4126%2F16%2F420631985%2F1816869050.mp4~hmac=dba016ec8022f607a7f3087b4cb643f0459783cbc3b953f34ad914f02da4b269/vimeo-prod-skyfire-std-us/01/4126/16/420631985/1816869050.mp4?filename=production+ID%3A4441578.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
     "timestamp": 1538006507000,
     "comments": [
       {
@@ -288,7 +288,7 @@
     "views": "3,092,284",
     "likes": "75,985",
     "duration": "4:20",
-    "video": "https://vod-progressive.akamaized.net/exp=1593908177~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F3183%2F16%2F415918903%2F1791170635.mp4~hmac=39dcbb2e4a3fcf83052a3e8ca78dbb7361be45bde142bd1c88fe7f411097d944/vimeo-prod-skyfire-std-us/01/3183/16/415918903/1791170635.mp4?filename=production+ID%3A4343448.mp4",
+    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "timestamp": 1531007012000,
     "comments": [
       {
