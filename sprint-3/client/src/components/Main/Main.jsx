@@ -23,7 +23,6 @@ class Main extends React.Component {
         });
       })
       .catch((err) => alert(err));
-      console.log(id)
   };
 
   componentDidMount() {
@@ -35,7 +34,6 @@ class Main extends React.Component {
         });
       })
       .catch((err) => alert(err));
-      console.log('component mounted')
   }
 
   componentDidUpdate(prevProps, _prevState) {
@@ -53,11 +51,13 @@ class Main extends React.Component {
 
   setMainVideo = () => {
     const endpoint = this.props.match.params.id;
-    axios.get(endpoint).then((suc) => {
-      this.setState({
-        mainVid: suc.data,
+    if(endpoint){
+      axios.get(endpoint).then((suc) => {
+        this.setState({
+          mainVid: suc.data,
+        });
       });
-    });
+    }
   };
 
   dynaDate = (datePosted) => {

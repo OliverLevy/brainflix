@@ -35,6 +35,7 @@
   &__main{
 
     @include desktop{
+      min-width: 614px;
       max-width: 712px;
       border-right: $divider solid 1px;
     }

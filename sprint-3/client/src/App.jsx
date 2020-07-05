@@ -16,7 +16,7 @@ class App extends React.Component {
         image: e.target.img.src
       }
     })
-    .then(success => console.log(success))
+    // .then(success)
     .catch(err => console.error(err))
     e.target.reset()
   }
