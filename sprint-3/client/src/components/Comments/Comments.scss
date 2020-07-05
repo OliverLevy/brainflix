@@ -129,4 +129,38 @@
       padding-right: 2.5rem;
     }
   }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 32px);
+  }
+
+  &__like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    outline: none;
+    border: none;
+    padding: 0.5rem 0 0;
+    cursor: pointer;
+
+    &--off {
+      display: none;
+    }
+
+    &--on {
+      padding-left: 0.5rem;
+      display: block;
+    }
+  }
+
+  &__delete-btn {
+    background: white;
+    outline: none;
+    border: none;
+    font-family: Avenir;
+    cursor: pointer;
+  }
 }

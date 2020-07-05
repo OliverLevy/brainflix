@@ -156,6 +156,24 @@ class Main extends React.Component {
     }
   }
 
+  // updateCommentLike = (success) => {
+  //   this.setState({mainVid: success.date})
+  // }
+
+  likeCommentHandler = (commentId) => {
+    if (!this.props.match.params.id) {
+      axios
+        .post(`/video/${this.state.data[0].id}/comments/${commentId}/like`)
+        .then((success) => this.updateVideoLike(success))
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post(`${this.props.match.params.id}/comments/${commentId}/like`)
+        .then((success) => this.updateVideoLike(success))
+        .catch((err) => console.log(err));
+    }
+  }
+
   render() {
     if (this.state.data.length === 0 || this.state.mainVid.length === 0) {
       if (this.state.data[0] || !this.props.match.params) {
@@ -184,6 +202,7 @@ class Main extends React.Component {
                 deleteHandler={this.deleteHandler}
                 mainVid={this.state.mainVid.comments}
                 dynaDate={this.dynaDate}
+                likeCommentHandler = {this.likeCommentHandler}
               />
             </div>
             <div className="content__aside">
