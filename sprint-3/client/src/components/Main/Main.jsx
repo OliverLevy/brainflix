@@ -4,17 +4,14 @@ import Hero from "../Hero/Hero";
 import Description from "../Description/Description";
 import Comments from "../Comments/Comments";
 import SideVideo from "../SideVideo/SideVideo";
-// import SideData from "../../JSON/side-video-data.json";
 import "./Main.scss";
 
-const url = "https://project-2-api.herokuapp.com/videos";
-const api_key = "?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8";
-const defaultId = "/1af0jruup5gu";
+// const url = "https://project-2-api.herokuapp.com/videos";
+// const api_key = "?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8";
+// const defaultId = "/1af0jruup5gu";
 
 class Main extends React.Component {
   state = {
-    // mainData: MainData[0],
-    // comments: MainData[0].comments,
     data: [],
     mainVid: [],
   };
@@ -36,25 +33,9 @@ class Main extends React.Component {
       !this.props.match.params.id &&
       this.props.match.params.id !== prevProps.match.params.id
     ) {
-      axios.get(`${url}${defaultId}${api_key}`).then((success) => {
-        this.setState({ mainVid: success.data });
-        setTimeout(() => window.scrollTo(0, 0), 100);
-      });
+      this.setDefaultVideo()
     } else if (this.props.match.params.id !== prevProps.match.params.id) {
-      axios.get(`${this.props.match.params.id}`).then((success) => {
-        this.setState({ mainVid: success.data });
-        setTimeout(() => window.scrollTo(0, 0), 100);
-      });
-    } else if (!this.state.data) {
-      console.log(this.state.data)
-      axios.get('/video-list')
-      .then(suc => {
-        console.log(suc)
-        this.setState({
-          data: suc.data
-        })
-      })
-      .catch(err => console.error(err))
+      this.setMainVideo()
     }
   }
 
@@ -69,6 +50,17 @@ class Main extends React.Component {
       })
       .catch((err) => alert(err));
   };
+
+  setMainVideo = () => {
+    const endpoint = this.props.match.params.id
+    axios
+      .get(endpoint)
+      .then(suc => {
+        this.setState({
+          mainVid: suc.data
+        })
+      })
+  }
 
 
   dynaDate = (datePosted) => {
@@ -90,84 +82,86 @@ class Main extends React.Component {
     }
   };
 
-  submitHandler = (event) => {
-    axios.get(`${this.props.match.params.id}`).then((success) => {
-      console.log(success);
-    });
+  // submitHandler = (event) => {
+  //   axios.get(`${this.props.match.params.id}`).then((success) => {
+  //     console.log(success);
+  //   });
 
-    event.preventDefault();
-    if (event.target.commentBox.value === "") {
-      return alert(
-        "There is nothing in your comment, please stop being a hecker."
-      );
-    } else if (!this.props.match.params.id) {
-      axios
-        .post(`${url}${defaultId}/comments${api_key}`, {
-          name: "Jon Barson",
-          comment: event.target.commentBox.value,
-        })
-        .then((success) => {
-          const oldData = this.state.mainVid;
-          const newData = [...this.state.mainVid.comments, success.data];
-          oldData.comments = newData;
-          this.setState({
-            mainVid: oldData,
-          });
-        })
-        .catch((err) => console.log(err));
-    } else {
-      axios
-        .post(`${url}/${this.props.match.params.id}/comments${api_key}`, {
-          name: "Jon Barson",
-          comment: event.target.commentBox.value,
-        })
-        .then((success) => {
-          const oldData = this.state.mainVid;
-          const newData = [...this.state.mainVid.comments, success.data];
-          oldData.comments = newData;
-          this.setState({
-            mainVid: oldData,
-          });
-        })
-        .catch((err) => console.log(err));
-    }
-    event.target.reset();
-  };
+  //   event.preventDefault();
+  //   if (event.target.commentBox.value === "") {
+  //     return alert(
+  //       "There is nothing in your comment, please stop being a hecker."
+  //     );
+  //   } else if (!this.props.match.params.id) {
+  //     axios
+  //       .post(`${url}${defaultId}/comments${api_key}`, {
+  //         name: "Jon Barson",
+  //         comment: event.target.commentBox.value,
+  //       })
+  //       .then((success) => {
+  //         const oldData = this.state.mainVid;
+  //         const newData = [...this.state.mainVid.comments, success.data];
+  //         oldData.comments = newData;
+  //         this.setState({
+  //           mainVid: oldData,
+  //         });
+  //       })
+  //       .catch((err) => console.log(err));
+  //   } else {
+  //     axios
+  //       .post(`${url}/${this.props.match.params.id}/comments${api_key}`, {
+  //         name: "Jon Barson",
+  //         comment: event.target.commentBox.value,
+  //       })
+  //       .then((success) => {
+  //         const oldData = this.state.mainVid;
+  //         const newData = [...this.state.mainVid.comments, success.data];
+  //         oldData.comments = newData;
+  //         this.setState({
+  //           mainVid: oldData,
+  //         });
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  //   event.target.reset();
+  // };
 
-  deleteHandler = (id) => {
-    if (!this.props.match.params.id) {
-      axios
-        .delete(`${url}${defaultId}/comments/${id}${api_key}`)
-        .then((success) => {
-          const oldData = this.state.mainVid;
-          const newData = oldData.comments.filter((item) => item.id !== id);
-          // const newData = [...this.state.mainVid.comments, success.data];
-          oldData.comments = newData;
-          this.setState({
-            mainVid: oldData,
-          });
-        })
-        .catch((err) => console.log(err));
-    } else {
-      axios
-        .delete(`${url}/${this.props.match.params.id}/comments/${id}${api_key}`)
-        .then((success) => {
-          const oldData = this.state.mainVid;
-          const newData = oldData.comments.filter((item) => item.id !== id);
-          oldData.comments = newData;
-          this.setState({
-            mainVid: oldData,
-          });
-        })
-        .catch((err) => console.log(err));
-    }
-  };
+  // deleteHandler = (id) => {
+  //   if (!this.props.match.params.id) {
+  //     axios
+  //       .delete(`${url}${defaultId}/comments/${id}${api_key}`)
+  //       .then((success) => {
+  //         const oldData = this.state.mainVid;
+  //         const newData = oldData.comments.filter((item) => item.id !== id);
+  //         // const newData = [...this.state.mainVid.comments, success.data];
+  //         oldData.comments = newData;
+  //         this.setState({
+  //           mainVid: oldData,
+  //         });
+  //       })
+  //       .catch((err) => console.log(err));
+  //   } else {
+  //     axios
+  //       .delete(`${url}/${this.props.match.params.id}/comments/${id}${api_key}`)
+  //       .then((success) => {
+  //         const oldData = this.state.mainVid;
+  //         const newData = oldData.comments.filter((item) => item.id !== id);
+  //         oldData.comments = newData;
+  //         this.setState({
+  //           mainVid: oldData,
+  //         });
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // };
 
 
   render() {
     if (this.state.data.length === 0 || this.state.mainVid.length === 0) {
-      if (this.state.data[0]) {
+      if (this.state.data[0] || !this.props.match.params) {
         this.setDefaultVideo();
+      } else {
+        this.setMainVideo()
       }
       return (
         <div className="main__loading">
