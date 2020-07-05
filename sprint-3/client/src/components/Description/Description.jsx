@@ -17,20 +17,20 @@ function Description({mainVid, dynaDate}){
             </div>
 
             <div className="desc__stats">
-              <div>
+              <div className="desc__stats-views">
                 <img 
                 className="desc__views-icon" 
                 src={ViewsIcon} 
                 alt="views-icon"/>
                 <p>{mainVid.views}</p>
               </div>
-              <div>
+              <button className="desc__stats-likes">
                 <img 
                 className="desc__likes-icon" 
                 src={LikesIcon} 
                 alt="likes-icon"/>
                 <p>{mainVid.likes}</p>
-              </div>
+              </button>
             </div>
           </div>
 
