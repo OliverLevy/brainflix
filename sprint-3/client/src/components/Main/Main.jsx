@@ -17,7 +17,6 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    console.log("the component did mount");
     axios
       .get("/video-list")
       .then((success) => {
@@ -33,9 +32,9 @@ class Main extends React.Component {
       !this.props.match.params.id &&
       this.props.match.params.id !== prevProps.match.params.id
     ) {
-      this.setDefaultVideo()
+      this.setDefaultVideo();
     } else if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.setMainVideo()
+      this.setMainVideo();
     }
   }
 
@@ -52,16 +51,13 @@ class Main extends React.Component {
   };
 
   setMainVideo = () => {
-    const endpoint = this.props.match.params.id
-    axios
-      .get(endpoint)
-      .then(suc => {
-        this.setState({
-          mainVid: suc.data
-        })
-      })
-  }
-
+    const endpoint = this.props.match.params.id;
+    axios.get(endpoint).then((suc) => {
+      this.setState({
+        mainVid: suc.data,
+      });
+    });
+  };
 
   dynaDate = (datePosted) => {
     let seconds = (Date.now() - datePosted) / 1000;
@@ -82,6 +78,24 @@ class Main extends React.Component {
     }
   };
 
+  addComment = (comment) => {
+    const oldData = this.state.mainVid;
+    const newData = [...this.state.mainVid.comments, comment.data];
+    oldData.comments = newData;
+    this.setState({
+      mainVid: oldData,
+    });
+  };
+
+  deleteComment = (id) => {
+    const oldData = this.state.mainVid;
+    const newData = oldData.comments.filter((item) => item.id !== id);
+    oldData.comments = newData;
+    this.setState({
+      mainVid: oldData,
+    });
+  }
+
   submitHandler = (event) => {
     event.preventDefault();
     if (event.target.commentBox.value === "") {
@@ -95,12 +109,7 @@ class Main extends React.Component {
           comment: event.target.commentBox.value,
         })
         .then((success) => {
-          const oldData = this.state.mainVid;
-          const newData = [...this.state.mainVid.comments, success.data];
-          oldData.comments = newData;
-          this.setState({
-            mainVid: oldData,
-          });
+          this.addComment(success)
         })
         .catch((err) => console.log(err));
     } else {
@@ -109,61 +118,54 @@ class Main extends React.Component {
           name: "Jon Barson",
           comment: event.target.commentBox.value,
         })
-        .then((success) => {
-          const oldData = this.state.mainVid;
-          const newData = [...this.state.mainVid.comments, success.data];
-          oldData.comments = newData;
-          this.setState({
-            mainVid: oldData,
-          });
-        })
+        .then((success) => this.addComment(success))
         .catch((err) => console.log(err));
     }
     event.target.reset();
   };
 
-  // deleteHandler = (id) => {
-  //   if (!this.props.match.params.id) {
-  //     axios
-  //       .delete(`${url}${defaultId}/comments/${id}${api_key}`)
-  //       .then((success) => {
-  //         const oldData = this.state.mainVid;
-  //         const newData = oldData.comments.filter((item) => item.id !== id);
-  //         // const newData = [...this.state.mainVid.comments, success.data];
-  //         oldData.comments = newData;
-  //         this.setState({
-  //           mainVid: oldData,
-  //         });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } else {
-  //     axios
-  //       .delete(`${url}/${this.props.match.params.id}/comments/${id}${api_key}`)
-  //       .then((success) => {
-  //         const oldData = this.state.mainVid;
-  //         const newData = oldData.comments.filter((item) => item.id !== id);
-  //         oldData.comments = newData;
-  //         this.setState({
-  //           mainVid: oldData,
-  //         });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // };
+  deleteHandler = (id) => {
+    if (!this.props.match.params.id) {
+      axios
+        .delete(`/video/${this.state.data[0].id}/comments/${id}`)
+        .then((success) => this.deleteComment(id))
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .delete(`${this.props.match.params.id}/comments/${id}`)
+        .then((success) => this.deleteComment(id))
+        .catch((err) => console.log(err));
+    }
+  };
 
+  likeVideoHandler = () => {
+    if (!this.props.match.params.id) {
+      axios
+        .post(`/video/${this.state.data[0].id}/like`)
+        .then((success) => {
+          console.log("this sort of works", success)
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post(`${this.props.match.params.id}/like`)
+        // .then((success) => this.deleteComment(id))
+        .catch((err) => console.log(err));
+    }
+  }
 
   render() {
     if (this.state.data.length === 0 || this.state.mainVid.length === 0) {
       if (this.state.data[0] || !this.props.match.params) {
         this.setDefaultVideo();
       } else {
-        this.setMainVideo()
+        this.setMainVideo();
       }
       return (
         <div className="main__loading">
           <h1>loading...</h1>
         </div>
-      )
+      );
     } else {
       return (
         <div className="main">

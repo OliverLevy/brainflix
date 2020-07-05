@@ -17,16 +17,20 @@ function Description({mainVid, dynaDate}){
             </div>
 
             <div className="desc__stats">
-              <img 
-              className="desc__views-icon" 
-              src={ViewsIcon} 
-              alt="views-icon"/>
-              <p>{mainVid.views}</p>
-              <img 
-              className="desc__likes-icon" 
-              src={LikesIcon} 
-              alt="likes-icon"/>
-              <p>{mainVid.likes}</p>
+              <div>
+                <img 
+                className="desc__views-icon" 
+                src={ViewsIcon} 
+                alt="views-icon"/>
+                <p>{mainVid.views}</p>
+              </div>
+              <div>
+                <img 
+                className="desc__likes-icon" 
+                src={LikesIcon} 
+                alt="likes-icon"/>
+                <p>{mainVid.likes}</p>
+              </div>
             </div>
           </div>
 

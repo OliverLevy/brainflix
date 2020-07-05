@@ -43,7 +43,12 @@ function Comments({ submitHandler, mainVid, dynaDate, deleteHandler }) {
                     <h3>{comment.name}</h3>
                     <h4 className="date">{dynaDate(comment.timestamp)}</h4>
                   </div>
-                  <p className="old-comment__comment">{comment.comment}</p>
+                  <div>
+                    <p className="old-comment__comment">{comment.comment}</p>
+                    <div>
+                      <h5>like delete</h5>
+                    </div>
+                  </div>
                 </div>
                 <div className="old-comment__delete">
                   <button
