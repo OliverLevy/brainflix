@@ -10,7 +10,7 @@ function Hero({ mainVid }) {
           src={mainVid.video}
           poster={mainVid.image}
           alt="Hero img"
-          controls
+          // controls
           muted
         />
         <div className="controls">
