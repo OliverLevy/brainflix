@@ -14,16 +14,18 @@ function Header() {
 
       <div className="header__items">
         <div className="header__search-container">
-          <input
-            type="search"
-            className="header__search-bar"
-            placeholder="Search"
-          />
+          <form>
+            <input
+              type="search"
+              className="header__search-bar"
+              placeholder="Search"
+            />
+          </form>
           <div className="header__search-icon"></div>
         </div>
 
         <div className="header__upload-container">
-          <Link to="/uploads" className='header__link btn'>
+          <Link to="/uploads" className="header__link btn">
             <button className="header__upload btn">
               <div className="header__upload-items">
                 <img src={UploadBtn} alt="uploads button" />

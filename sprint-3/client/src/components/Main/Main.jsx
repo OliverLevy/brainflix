@@ -6,9 +6,6 @@ import Comments from "../Comments/Comments";
 import SideVideo from "../SideVideo/SideVideo";
 import "./Main.scss";
 
-// const url = "https://project-2-api.herokuapp.com/videos";
-// const api_key = "?api_key=2198d2ef-b132-4f64-accc-f82f4168c9a8";
-// const defaultId = "/1af0jruup5gu";
 
 class Main extends React.Component {
   state = {
@@ -155,10 +152,6 @@ class Main extends React.Component {
         .catch((err) => console.log(err));
     }
   }
-
-  // updateCommentLike = (success) => {
-  //   this.setState({mainVid: success.date})
-  // }
 
   likeCommentHandler = (commentId) => {
     if (!this.props.match.params.id) {
