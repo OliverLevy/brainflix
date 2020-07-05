@@ -82,49 +82,45 @@ class Main extends React.Component {
     }
   };
 
-  // submitHandler = (event) => {
-  //   axios.get(`${this.props.match.params.id}`).then((success) => {
-  //     console.log(success);
-  //   });
-
-  //   event.preventDefault();
-  //   if (event.target.commentBox.value === "") {
-  //     return alert(
-  //       "There is nothing in your comment, please stop being a hecker."
-  //     );
-  //   } else if (!this.props.match.params.id) {
-  //     axios
-  //       .post(`${url}${defaultId}/comments${api_key}`, {
-  //         name: "Jon Barson",
-  //         comment: event.target.commentBox.value,
-  //       })
-  //       .then((success) => {
-  //         const oldData = this.state.mainVid;
-  //         const newData = [...this.state.mainVid.comments, success.data];
-  //         oldData.comments = newData;
-  //         this.setState({
-  //           mainVid: oldData,
-  //         });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } else {
-  //     axios
-  //       .post(`${url}/${this.props.match.params.id}/comments${api_key}`, {
-  //         name: "Jon Barson",
-  //         comment: event.target.commentBox.value,
-  //       })
-  //       .then((success) => {
-  //         const oldData = this.state.mainVid;
-  //         const newData = [...this.state.mainVid.comments, success.data];
-  //         oldData.comments = newData;
-  //         this.setState({
-  //           mainVid: oldData,
-  //         });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  //   event.target.reset();
-  // };
+  submitHandler = (event) => {
+    event.preventDefault();
+    if (event.target.commentBox.value === "") {
+      return alert(
+        "There is nothing in your comment, please stop being a hecker."
+      );
+    } else if (!this.props.match.params.id) {
+      axios
+        .post(`/video/${this.state.data[0].id}/comments`, {
+          name: "Jon Barson",
+          comment: event.target.commentBox.value,
+        })
+        .then((success) => {
+          const oldData = this.state.mainVid;
+          const newData = [...this.state.mainVid.comments, success.data];
+          oldData.comments = newData;
+          this.setState({
+            mainVid: oldData,
+          });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post(`${this.props.match.params.id}/comments`, {
+          name: "Jon Barson",
+          comment: event.target.commentBox.value,
+        })
+        .then((success) => {
+          const oldData = this.state.mainVid;
+          const newData = [...this.state.mainVid.comments, success.data];
+          oldData.comments = newData;
+          this.setState({
+            mainVid: oldData,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
+    event.target.reset();
+  };
 
   // deleteHandler = (id) => {
   //   if (!this.props.match.params.id) {

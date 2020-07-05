@@ -35,7 +35,7 @@ app.post("/video/:id/comments", (req, res) => {
     timestamp: Date.now(),
   };
   comments.push(output);
-  res.send(mainVideo[0]);
+  res.send(comments[comments.length - 1]);
 });
 
 app.delete("/video/:id/comments/:commentId", (req, res) => {
@@ -48,23 +48,32 @@ app.delete("/video/:id/comments/:commentId", (req, res) => {
   res.send(mainVideo[0]);
 });
 
-addLike = (like) =>{
-  let output = like
-  output++
-  return output
-}
+addLike = (like) => {
+  let output = like;
+  output++;
+  return output;
+};
 
 app.post("/video/:id/like", (req, res) => {
   let reqId = req.params.id;
   let mainVideo = mainVideoList.filter((item) => item.id === reqId);
-  let oldlikes = (mainVideo[0].likes)
-  let formattedLikes = Number(oldlikes.split(',').join(''))
-  let likeAdded = addLike(formattedLikes)
-  mainVideo[0].likes = likeAdded.toLocaleString()
+  let oldLikes = mainVideo[0].likes;
+  let formattedLikes = Number(oldLikes.split(",").join(""));
+  let likeAdded = addLike(formattedLikes);
+  mainVideo[0].likes = likeAdded.toLocaleString();
+  res.send(mainVideo[0]);
+});
 
-
-  console.info(mainVideo[0].likes)
-  res.send('like')
-})
+app.post("/video/:id/comments/:commentId/like", (req, res) => {
+  let reqId = req.params.id;
+  let commentId = req.params.commentId;
+  let mainVideo = mainVideoList.filter((item) => item.id === reqId);
+  let comments = mainVideo[0].comments;
+  let indexToLike = comments.findIndex((item) => item.id === commentId);
+  let oldLikes = mainVideo[0].comments[indexToLike].likes;
+  let likeAdded = addLike(oldLikes);
+  mainVideo[0].comments[indexToLike].likes = likeAdded;
+  res.send(mainVideo[0]);
+});
 
 app.listen(8080, () => console.info("running on 8080"));
