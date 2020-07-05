@@ -138,18 +138,20 @@ class Main extends React.Component {
     }
   };
 
+  updateVideoLike = (success) => {
+    this.setState({mainVid: success.data})
+  }
+
   likeVideoHandler = () => {
     if (!this.props.match.params.id) {
       axios
         .post(`/video/${this.state.data[0].id}/like`)
-        .then((success) => {
-          console.log("this sort of works", success)
-        })
+        .then((success) => this.updateVideoLike(success))
         .catch((err) => console.log(err));
     } else {
       axios
         .post(`${this.props.match.params.id}/like`)
-        // .then((success) => this.deleteComment(id))
+        .then((success) => this.updateVideoLike(success))
         .catch((err) => console.log(err));
     }
   }
@@ -175,6 +177,7 @@ class Main extends React.Component {
               <Description
                 mainVid={this.state.mainVid}
                 dynaDate={this.dynaDate}
+                likeVideoHandler={this.likeVideoHandler}
               />
               <Comments
                 submitHandler={this.submitHandler}

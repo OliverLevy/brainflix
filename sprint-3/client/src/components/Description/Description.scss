@@ -77,6 +77,14 @@
 
     &:hover{
       border: 2px $accentHover solid;
+
+      @include desktop{
+        cursor: pointer;
+      }
+    }
+
+    &:active{
+      transform: translate(1px,2px)
     }
 
     &:focus{

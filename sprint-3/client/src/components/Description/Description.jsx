@@ -5,7 +5,7 @@ import LikesIcon from '../../assets/Icons/SVG/Icon-likes.svg'
 import './Description.scss'
 
 
-function Description({mainVid, dynaDate}){
+function Description({mainVid, dynaDate, likeVideoHandler}){
   return(
     <div className="desc">
           <h1 className="desc__title">{mainVid.title}</h1>
@@ -24,7 +24,10 @@ function Description({mainVid, dynaDate}){
                 alt="views-icon"/>
                 <p>{mainVid.views}</p>
               </div>
-              <button className="desc__stats-likes">
+              <button 
+              className="desc__stats-likes" 
+              onClick={likeVideoHandler}
+              >
                 <img 
                 className="desc__likes-icon" 
                 src={LikesIcon} 
