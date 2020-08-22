@@ -1,0 +1,166 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.add-comment {
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 0 0;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 48px - 16px);
+    padding: 0 0 1.5rem;
+
+    @include tablet {
+      padding: 0 2.5rem 1.5rem 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__input-container {
+    width: 100%;
+
+    @include tablet {
+      width: calc(100% - 160px - 16px);
+    }
+  }
+
+  &__input {
+    height: 48px;
+    width: 100%;
+    resize: none;
+    margin: 0 0 1rem;
+    border-radius: 4px;
+    border: $inputBorder 2px solid;
+    background: $inputBg;
+    font-family: Avenir;
+    padding: 12px;
+    transition: height 0.2s;
+
+    &::placeholder {
+      color: black;
+    }
+
+    @include tablet {
+      height: 48px;
+    }
+
+    &:focus {
+      outline: none;
+      border: $accent 2px solid;
+      height: 96px;
+
+      @include tablet {
+        height: 48px;
+      }
+    }
+  }
+
+  &__btn {
+    height: 48px;
+
+    @include tablet {
+      width: 160px;
+    }
+  }
+
+  &__avatar-container {
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    top: 20px;
+  }
+
+  &__avatar {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.old-comment {
+  padding: 0 0 2.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    position: relative;
+  }
+
+  &__avatar {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background: grey;
+  }
+
+  &__items {
+    width: calc(100% - 48px - 16px);
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      justify-content: flex-start;
+
+      & h3 {
+        padding-right: 8px;
+      }
+    }
+  }
+
+  &__comment {
+    width: 100%;
+    overflow: hidden;
+    overflow-wrap: break-word;
+
+    @include tablet {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 32px);
+  }
+
+  &__like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    outline: none;
+    border: none;
+    padding: 0.5rem 0 0;
+    cursor: pointer;
+
+    &--off {
+      display: none;
+    }
+
+    &--on {
+      padding-left: 0.5rem;
+      display: block;
+    }
+  }
+
+  &__delete-btn {
+    background: white;
+    outline: none;
+    border: none;
+    font-family: Avenir;
+    cursor: pointer;
+  }
+}

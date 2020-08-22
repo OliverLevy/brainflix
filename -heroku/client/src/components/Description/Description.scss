@@ -1,0 +1,110 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.desc{
+  padding: 2rem 0 2.5rem;
+  transition: all .2s;
+
+  @include tablet{
+    padding: 3rem 0 4rem;
+  }
+
+  @include desktop{
+    padding: 3rem 0 4rem;
+  }
+
+  &__title{
+    padding: 0 0 1rem;
+
+    @include tablet{
+      padding: 0 0 1.5rem;
+    }
+    @include desktop{
+      padding: 0 1rem 1.5rem 0;
+    }
+  }
+
+  &__items{
+    display: flex;
+    flex-direction: column;
+
+    @include tablet{
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__channel-container{
+    padding: 0 0 2rem;
+    display: flex;
+    align-items: center;
+    
+    @include tablet{
+      padding: 0 0 1.5rem;
+    }
+  }
+
+  &__channel{
+    padding: 0 .5rem 0 0;
+  }
+
+  &__stats{
+    display: flex;
+    padding: 0 0 1.5rem;
+
+    @include desktop{
+      padding-right: 2.5rem;
+    }
+  }
+
+  &__stats-views{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__stats-likes{
+    margin: 0 .5rem 0 1.5rem;
+    padding: 0 .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px $accent solid;
+    border-radius: 4px;
+    background-color: white;
+    outline: none;
+
+    &:hover{
+      border: 2px $accentHover solid;
+
+      @include desktop{
+        cursor: pointer;
+      }
+    }
+
+    &:active{
+      transform: translate(1px,1px)
+    }
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  &__views-icon{
+    padding: 0 .5rem 0 0;
+  }
+
+  &__likes-icon{
+    padding: 0 .5rem 0 0;
+  }
+
+  &__text{
+    padding: 1.5rem 0 0;
+
+    @include tablet{
+      max-width: 528px;
+    }
+  }
+}

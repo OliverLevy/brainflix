@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.12cdaa96.chunk.css",
+    "main.js": "/static/js/main.2842af60.chunk.js",
+    "main.js.map": "/static/js/main.2842af60.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.86cc27bc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.86cc27bc.js.map",
+    "static/js/2.e0231889.chunk.js": "/static/js/2.e0231889.chunk.js",
+    "static/js/2.e0231889.chunk.js.map": "/static/js/2.e0231889.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.cb1eb32f7c8af49d331ea8746fee24dd.js": "/precache-manifest.cb1eb32f7c8af49d331ea8746fee24dd.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.12cdaa96.chunk.css.map": "/static/css/main.12cdaa96.chunk.css.map",
+    "static/js/2.e0231889.chunk.js.LICENSE.txt": "/static/js/2.e0231889.chunk.js.LICENSE.txt",
+    "static/media/Hero.scss": "/static/media/Icon-volume.d17c2fe7.svg",
+    "static/media/Icon-likes.svg": "/static/media/Icon-likes.23c3f857.svg",
+    "static/media/Header.scss": "/static/media/Icon-search.28606900.svg",
+    "static/media/Icon-upload.svg": "/static/media/Icon-upload.909b8976.svg",
+    "static/media/Icon-views.svg": "/static/media/Icon-views.a488fc5b.svg",
+    "static/media/index.scss": "/static/media/Linotype-AvenirNextLTPro-Regular.67016125.otf",
+    "static/media/Logo-brainflix.svg": "/static/media/Logo-brainflix.1e121e6b.svg",
+    "static/media/Mohan-muruge.jpg": "/static/media/Mohan-muruge.ba2f48f9.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.86cc27bc.js",
+    "static/js/2.e0231889.chunk.js",
+    "static/css/main.12cdaa96.chunk.css",
+    "static/js/main.2842af60.chunk.js"
+  ]
+}
